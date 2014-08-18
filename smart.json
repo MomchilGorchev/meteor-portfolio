@@ -1,0 +1,8 @@
+{
+  "packages": {
+    "wait-on-lib": {},
+    "iron-router": {},
+    "scss": {},
+    "bootstrap-3": {}
+  }
+}
