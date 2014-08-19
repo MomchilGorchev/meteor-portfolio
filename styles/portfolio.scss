@@ -10,4 +10,17 @@ body{
       color: ivory;
       text-align: center;
     }
+    .item {
+      width: 400px;
+      border: 1px solid white;
+      height: 100px;
+      margin-bottom: 15px;
+      background: ivory;
+      border-radius: 4px;
+    }
+    .item.w2 { width: 50%; }
+
+    .item.h2 { height: 200px; }
+    .item.h3 { height: 330px; }
+    .item.h4 { height: 480px; }
 }
