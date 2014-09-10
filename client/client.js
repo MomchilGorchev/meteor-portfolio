@@ -5,6 +5,7 @@
 if (Meteor.isClient) {
 
     Template.app.rendered = function(){
+
         var msnry = new Masonry('#container', {
             // options
             isFitWidth: true,

@@ -4,9 +4,8 @@
 # but you can also edit it by hand.
 
 standard-app-packages
-autopublish
-insecure
-wait-on-lib
-iron-router
-scss
-bootstrap-3
+manuelschoebel:wait-on-lib@0.0.3
+cmather:iron-router@0.8.2
+mizzao:bootstrap-3
+fourseven:scss
+
