@@ -2,35 +2,49 @@
  * Created by momchillgorchev on 10/09/2014.
  */
 Template.app.events({
-    'click .expand': function(event, template){
+    'click .itemToggle': function(event, template){
 
         var _this = $(event.currentTarget),
             container = _this.closest('.item'),
             styles = {
-//                position: 'fixed',
                 top: 0,
                 left: 0
             };
 
-        Session.set('ExpandedItemStyles', container.attr('style'));
+        if(!container.hasClass('itemExpanded')){
+            Session.set('ExpandedItemStyles', container.attr('style'));
+            _this.toggleClass('itemOpened, close');
 
-        $('.item').not(container).animate({opacity: 0.2}, 200,
-                function(){
-                    container.css(styles).addClass('itemExpanded');
-        });
-    },
+            $('.item').animate(
+                {
+                    opacity: 0.2
+                },
+                {
+                    duration: 400,
+                    easing: 'easeInOutExpo',
+                    complete: function(){
+                        container.css(styles).addClass('itemExpanded');
+                    }
+                }
+            );
+        }
+        else{
+            var originalStyles = Session.get('ExpandedItemStyles');
 
-    'click .closeExpandedItem': function(event, template){
+            container.attr('style', originalStyles).removeClass('itemExpanded');
 
-        var _this = $(event.currentTarget),
-            container = _this.closest('.item'),
-            originalStyles = Session.get('ExpandedItemStyles');
-
-        container.attr('style', originalStyles).removeClass('itemExpanded');
-
-        $('.item').not(container).animate({
-            opacity: 1
-        }, 500);
-
+            $('.item').animate(
+                {
+                    opacity: 1
+                },
+                {
+                    duration: 400,
+                    easing: 'easeInOutExpo',
+                    complete: function(){
+                        _this.toggleClass('itemOpened, close');
+                    }
+                }
+            );
+        }
     }
 });

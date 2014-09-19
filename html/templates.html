@@ -1,74 +1,47 @@
 <template name="app">
-    <div class="app-header">
-        <h1>GORCHEV</h1>
-        <div class="socials">
-            <ul>
-                <li>
-                    <a href="#">
-                        <i class="fa fa-github fa-3x"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fa fa-bitbucket fa-3x"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fa fa-envelope fa-3x"></i>
-                    </a>
-                </li>
-               <li>
-                   <a href="#">
-                        <i class="fa fa-facebook fa-3x"></i>
-                   </a>
-               </li>
-                <li>
-                    <a href="#">
-                        <i class="fa fa-linkedin fa-3x"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fa fa-twitter fa-3x"></i>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </div>
+    {{> header}}
     <div id="container">
         <div class="item h3">
-            <a class="closeExpandedItem">X</a>
+            <button class="lines-button x itemToggle" type="button" role="button" aria-label="Toggle Navigation">
+                <span class="lines"></span>
+            </button>
             <h4 class="expand">About</h4>
         </div>
         <div class="item h3">
-            <a class="closeExpandedItem">X</a>
+            <button class="lines-button x itemToggle" type="button" role="button" aria-label="Toggle Navigation">
+                <span class="lines"></span>
+            </button>
             <h4 class="expand">Portfolio</h4>
         </div>
         <div class="item">
-            <a class="closeExpandedItem">X</a>
+            <button class="lines-button x itemToggle" type="button" role="button" aria-label="Toggle Navigation">
+                <span class="lines"></span>
+            </button>
             <h4 class="expand">Contacts</h4>
         </div>
         <div class="item h3">
-            <a class="closeExpandedItem">X</a>
+            <button class="lines-button x itemToggle" type="button" role="button" aria-label="Toggle Navigation">
+                <span class="lines"></span>
+            </button>
             <h4 class="expand">Portfolio</h4>
         </div>
         <div class="item">
-            <a class="closeExpandedItem">X</a>
+            <button class="lines-button x itemToggle" type="button" role="button" aria-label="Toggle Navigation">
+                <span class="lines"></span>
+            </button>
             <h4 class="expand">Portfolio</h4>
         </div>
         <div class="item h3">
-            <a class="closeExpandedItem">X</a>
+            <button class="lines-button x itemToggle" type="button" role="button" aria-label="Toggle Navigation">
+                <span class="lines"></span>
+            </button>
             ...
         </div>
         <div class="item">
-            <a class="closeExpandedItem">X</a>
+            <button class="lines-button x itemToggle" type="button" role="button" aria-label="Toggle Navigation">
+                <span class="lines"></span>
+            </button>
             ...
         </div>
-        <div class="item"><a class="closeExpandedItem">X</a>...</div>
-        <div class="item"><a class="closeExpandedItem">X</a>...</div>
-        <div class="item"><a class="closeExpandedItem">X</a>...</div>
-        <div class="item"><a class="closeExpandedItem">X</a>...</div>
-        <div class="item"><a class="closeExpandedItem">X</a>...</div>
     </div>
 </template>

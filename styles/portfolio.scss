@@ -31,9 +31,19 @@ $theme-lightest: #22c2bc;
 }
 
 body {
-    box-sizing: border-box;
-    background: $theme-darkest;
-    background-size: cover;
+  box-sizing: border-box;
+  background: $theme-darkest;
+  background-size: cover;
+  & *,
+  & *:before,
+  & *:after {
+    transform: translate3d(0,0,0);
+  }
+  button:focus{
+    border: none;
+    outline: none;
+  }
+
 }
 
 .app-header{
@@ -79,6 +89,12 @@ h1{
   background: $theme-lightest;
   border-radius: 4px;
   box-shadow: 0 0 5px 1px $theme-lightest;
+  button.lines-button{
+    background: transparent;
+    border: none;
+    float: right;
+    margin-top: -5px;
+  }
   @include vendor-transition(0.4s, ease);
   .closeExpandedItem{
     display: none;
@@ -102,7 +118,8 @@ h1{
     z-index: 201;
     right: 5%;
     bottom: 5%;
-    @include vendor-transition(0.3s, ease-in-out);
+    opacity:1!important;
+    @include vendor-transition(0.2s, ease-in-out);
     .closeExpandedItem{
       display: block;
     }
@@ -121,6 +138,93 @@ h1{
       width: 100%;
       float: none;
       text-align: center;
+    }
+  }
+}
+
+
+
+$button-size : 3.5rem;
+$transition: .3s; // increase this to see the transformations in slow-motion
+
+@mixin line {
+  display: inline-block;
+  width: $button-size;
+  height: $button-size/7;
+  background: $theme-semi-darkest;
+  border-radius: $button-size/14;
+  transition: $transition;
+}
+
+.lines {
+
+  //create middle line
+  @include line;
+  position: relative;
+
+  /*create the upper and lower lines as pseudo-elements of the middle line*/
+  &:before, &:after {
+
+    @include line;
+    position: absolute;
+    left:0;
+    content: '';
+    transform-origin: $button-size/14 center;
+  }
+  &:before { top: $button-size/4; }
+  &:after { top: -$button-size/4; }
+}
+
+.lines-button:hover {
+  opacity: 1;
+
+  .lines {
+    &:before { top: $button-size/3.5; }
+    &:after { top: -$button-size/3.5; }
+  }
+}
+
+.lines-button {
+  display: inline-block;
+  padding: $button-size/2 $button-size/4;
+  transition: .3s;
+  cursor: pointer;
+  user-select: none;
+  border-radius: $button-size/7;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  &:active {
+    transition: 0;
+    background: rgba(0,0,0,.1);
+  }
+}
+
+.lines-button.x.close {
+
+  opacity: 1;
+  padding: $button-size/2 $button-size/4;
+
+  .lines {
+
+    /*hide the middle line*/
+    background: transparent;
+
+    /*overlay the lines by setting both their top values to 0*/
+    &:before, &:after {
+      transform-origin: 50% 50%;
+      top: 0;
+      width: $button-size;
+    }
+
+    // rotate the lines to form the x shape
+    &:before {
+      transform: rotate3d(0, 0, 1, 45deg);
+    }
+    &:after {
+      transform: rotate3d(0, 0, 1, -45deg);
     }
   }
 }
