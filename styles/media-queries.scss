@@ -1,0 +1,19 @@
+/*
+  Responsive rules
+*/
+
+@media all and (max-width: 550px){
+  .app-header{
+    height: 125px;
+    .socials{
+      float: none;
+      width: 340px;
+      margin: 20px auto;
+    }
+    h1{
+      width: 100%;
+      float: none;
+      text-align: center;
+    }
+  }
+}
