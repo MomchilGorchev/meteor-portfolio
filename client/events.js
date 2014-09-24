@@ -27,8 +27,7 @@ Template.app.events({
                     }
                 }
             );
-        }
-        else{
+        }else{
             var originalStyles = Session.get('ExpandedItemStyles');
 
             container.attr('style', originalStyles).removeClass('itemExpanded');

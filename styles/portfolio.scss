@@ -64,11 +64,13 @@ body {
     padding: 9px 0 0 10px;
     font-family: sinkin_sans;
     margin-top:0;
+    @include vendor-transition(0.2s, ease);
   }
   .socials{
     float: right;
     margin-top: 10px;
     margin-right: 10px;
+    @include vendor-transition(0.2s, ease);
     ul{
       list-style-type: none;
       li{
@@ -77,11 +79,26 @@ body {
         a{
           color: $theme-light;
           &:hover{
+            @include vendor-transition(0.2s, ease);
             color: darken($theme-light, 17%);
           }
         }
       }
     }
+  }
+}
+.app-footer{
+  width: 100%;
+  height: 60px;
+  background: $theme-semi-darkest;
+  color: lighten($theme-light, 5%);
+  .signature{
+    float: right;
+    margin: 20px 35px;
+  }
+  .created{
+    float: left;
+    margin: 20px 35px;
   }
 }
 h1{
