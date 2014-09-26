@@ -15,7 +15,7 @@ Template.app.events({
             Session.set('ExpandedItemStyles', container.attr('style'));
             _this.toggleClass('itemOpened, close');
 
-            $('.item').animate(
+            $('.item').velocity(
                 {
                     opacity: 0.2
                 },
@@ -32,7 +32,7 @@ Template.app.events({
 
             container.attr('style', originalStyles).removeClass('itemExpanded');
 
-            $('.item').animate(
+            $('.item').velocity(
                 {
                     opacity: 1
                 },
@@ -46,4 +46,13 @@ Template.app.events({
             );
         }
     }
+});
+
+Template.appInitial.events({
+   'click #enterSite': function(e,t){
+       var _this = $(e.currentTarget),
+           spinner = $(t).find('.main-spinner');
+
+       Router.go('/app');
+   }
 });
