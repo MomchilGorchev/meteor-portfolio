@@ -8,7 +8,9 @@ Template.app.events({
             container = _this.closest('.item'),
             styles = {
                 top: 0,
-                left: 0
+                left: 0,
+                width: '100%',
+                height: '100%'
             };
 
         if(!container.hasClass('itemExpanded')){
@@ -20,14 +22,17 @@ Template.app.events({
                     opacity: 0.2
                 },
                 {
-                    duration: 400,
+                    duration: 200,
                     easing: 'easeInOutExpo',
                     complete: function(){
-                        container.css(styles).addClass('itemExpanded');
+                        container.addClass('itemExpanded').velocity(styles,
+                            {
+                                duration: 200
+                            });
                     }
                 }
             );
-        }else{
+        } else {
             var originalStyles = Session.get('ExpandedItemStyles');
 
             container.attr('style', originalStyles).removeClass('itemExpanded');
@@ -51,8 +56,24 @@ Template.app.events({
 Template.appInitial.events({
    'click #enterSite': function(e,t){
        var _this = $(e.currentTarget),
-           spinner = $(t).find('.main-spinner');
+           btnHolder = _this.closest('.enter-btn-holder'),
+           spinner = btnHolder.siblings('.main-spinner'),
+           headerText = btnHolder.siblings('.header-text');
 
-       Router.go('/app');
+       spinner.velocity(
+           {
+               opacity: 1
+           },
+           {
+               duration: 200
+           }
+       ).addClass('animated fadeIn');
+       setTimeout(function(){
+           headerText.addClass('animated fadeOutUp custom-header-animation-no-delay');
+           btnHolder.addClass('animated fadeOutUp custom-header-animation-05s-delay');
+           setTimeout(function(){
+               Router.go('/app');
+           }, 1200);
+       }, 2000);
    }
 });
