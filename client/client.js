@@ -6,7 +6,8 @@ if (Meteor.isClient) {
 
     Template.app.rendered = function(){
 
-        var msnry = new Masonry('#container', {
+        var spinnerOuter = $('.main-spinner');
+        msnry = new Masonry('#container', {
             // options
             isFitWidth: true,
             itemSelector: '.item',
@@ -17,6 +18,16 @@ if (Meteor.isClient) {
                 margin: '50px auto'
             }
         });
+
+        setTimeout(function(){
+            spinnerOuter.velocity({opacity: 0},
+                {
+                    duration: 400,
+                    complete: function(){
+                        $('.item').velocity({opacity: 1}, {duration: 400});
+                    }
+                });
+        }, 1300);
     };
 
     Template.appInitial.rendered = function(){

@@ -10,7 +10,8 @@ Template.app.events({
                 top: 0,
                 left: 0,
                 width: '100%',
-                height: '100%'
+                height: '100%',
+                translateZ: 0
             };
 
         if(!container.hasClass('itemExpanded')){
@@ -27,7 +28,8 @@ Template.app.events({
                     complete: function(){
                         container.addClass('itemExpanded').velocity(styles,
                             {
-                                duration: 200
+                                duration: 200,
+                                easing: 'easeInOutExpo'
                             });
                     }
                 }
@@ -55,9 +57,11 @@ Template.app.events({
 
 Template.appInitial.events({
    'click #enterSite': function(e,t){
+
        var _this = $(e.currentTarget),
            btnHolder = _this.closest('.enter-btn-holder'),
            spinner = btnHolder.siblings('.main-spinner'),
+           spinnerInner = spinner.find('.spinner'),
            headerText = btnHolder.siblings('.header-text');
 
        spinner.velocity(
@@ -65,15 +69,24 @@ Template.appInitial.events({
                opacity: 1
            },
            {
-               duration: 200
+               duration: 200,
+               easing: 'easeInOutExpo'
            }
        ).addClass('animated fadeIn');
+
        setTimeout(function(){
-           headerText.addClass('animated fadeOutUp custom-header-animation-no-delay');
-           btnHolder.addClass('animated fadeOutUp custom-header-animation-05s-delay');
-           setTimeout(function(){
-               Router.go('/app');
-           }, 1200);
-       }, 2000);
+           spinnerInner.find('div').velocity({backgroundColor: '#0ADA86'},
+               {
+                   duration: 800,
+                   complete: function(){
+                       headerText.addClass('animated fadeOutUp custom-header-animation-no-delay');
+                       btnHolder.addClass('animated fadeOutUp custom-header-animation-delay');
+                       setTimeout(function(){
+                           Router.go('/app');
+                       }, 800);
+                   }
+               }
+           );
+       }, 1500);
    }
 });
