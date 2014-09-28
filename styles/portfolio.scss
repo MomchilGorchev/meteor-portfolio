@@ -249,6 +249,7 @@ h1{
     margin: 22px 10px;
     font-size: 20px;
     text-transform: uppercase;
+    @include customise-animation(1s, 0s, 2);
   }
   button.lines-button{
     background: transparent;

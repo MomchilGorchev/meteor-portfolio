@@ -6,25 +6,31 @@ if (Meteor.isClient) {
 
     Template.app.rendered = function(){
 
-        var spinnerOuter = $('.main-spinner');
-        msnry = new Masonry('#container', {
-            // options
-            isFitWidth: true,
-            itemSelector: '.item',
-            gutter: 20,
-            containerStyle:{
-                position: 'relative',
-                width: '95%,',
-                margin: '50px auto'
-            }
-        });
+        var spinnerOuter = $('.main-spinner'),
+            items = $('.item'),
+            msnry = new Masonry('#container', {
+                // options
+                isFitWidth: true,
+                itemSelector: '.item',
+                gutter: 20,
+                containerStyle:{
+                    position: 'relative',
+                    width: '95%,',
+                    margin: '50px auto'
+                }
+            });
 
         setTimeout(function(){
             spinnerOuter.velocity({opacity: 0},
                 {
                     duration: 400,
                     complete: function(){
-                        $('.item').velocity({opacity: 1}, {duration: 400});
+                        items.velocity({opacity: 1}, {
+                            duration: 400,
+                            complete:function(){
+                                items.find('h4').addClass('animated tada');
+                            }
+                        });
                     }
                 });
         }, 1300);
