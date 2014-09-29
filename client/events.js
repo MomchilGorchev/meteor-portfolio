@@ -29,7 +29,16 @@ Template.app.events({
                         container.addClass('itemExpanded').velocity(styles,
                             {
                                 duration: 200,
-                                easing: 'easeInOutExpo'
+                                easing: 'easeInOutExpo',
+                                complete: function(){
+                                    console.log('fired');
+                                    container.find('.item-content').velocity({opacity: 1},
+                                        {
+                                            duration: 400,
+                                            easing: 'easeInOutExpo'
+                                        }
+                                    );
+                                }
                             });
                     }
                 }
@@ -37,7 +46,18 @@ Template.app.events({
         } else {
             var originalStyles = Session.get('ExpandedItemStyles');
 
-            container.attr('style', originalStyles).removeClass('itemExpanded');
+            container.find('.item-content').velocity(
+                {
+                    opacity: 0
+                },
+                {
+                    duration: 400,
+                    easing: 'easeInOutExpo',
+                    complete: function(){
+                        container.attr('style', originalStyles).removeClass('itemExpanded');
+                    }
+                }
+            );
 
             $('.item').velocity(
                 {
@@ -48,6 +68,7 @@ Template.app.events({
                     easing: 'easeInOutExpo',
                     complete: function(){
                         _this.toggleClass('itemOpened, close');
+
                     }
                 }
             );

@@ -12,7 +12,18 @@
   font-weight: normal;
   font-style: normal;
 }
-
+//56915284-ekp3-4QykC4--6KaslRgHA.eot
+@font-face {
+  font-family: 'fancy_font';
+  src: url('fonts/56915284-ekp3-4QykC4--6KaslRgHA.eot');
+  src: url('fonts/56915284-ekp3-4QykC4--6KaslRgHA.eot?#iefix') format('embedded-opentype'),
+//  url('fonts/56915284-ekp3-4QykC4--6KaslRgHA.woff2') format('woff2'),
+  url('fonts/56915284-ekp3-4QykC4--6KaslRgHA.woff') format('woff'),
+  url('fonts/56915284-ekp3-4QykC4--6KaslRgHA.ttf') format('truetype'),
+  url('fonts/56915284-ekp3-4QykC4--6KaslRgHA.svg#56915284-ekp3-4QykC4--6KaslRgHA') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
 $spinner-bg: #BAD3D0;
 // Theme - Teal Steal - adobe kuler
 $theme-darkest: #1f1f1f;
@@ -243,11 +254,24 @@ h1{
   .closeExpandedItem{
     display: none;
   }
+  .item-content{
+    opacity: 0;
+    margin-top: 55px;
+    z-index:5;
+    img{
+      width: 100%;
+    }
+    p{
+      width: 40%;
+      float: left;
+      padding: 0 15px 10px 15px
+    }
+  }
   h4{
-    font-family: Montserrat;
+    font-family: fancy_font;
     float: left;
-    margin: 22px 10px;
-    font-size: 20px;
+    margin: 20px 10px;
+    font-size: 25px;
     text-transform: uppercase;
     @include customise-animation(1s, 0s, 2);
   }
@@ -256,6 +280,7 @@ h1{
     border: none;
     float: right;
     margin-top: -5px;
+    z-index: 10;
   }
   &.w2{
     width: 50%;
@@ -279,6 +304,14 @@ h1{
     @include vendor-transition(0.2s, ease-in-out);
     .closeExpandedItem{
       display: block;
+    }
+    .item-content{
+      margin-top: 55px;
+      z-index:5;
+      img{
+        width: 50%;
+        float: left;
+      }
     }
   }
 }
