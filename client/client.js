@@ -7,6 +7,7 @@ if (Meteor.isClient) {
     Template.app.rendered = function(){
 
         var spinnerOuter = $('.main-spinner'),
+            spinnerInner = spinnerOuter.find('.spinner'),
             items = $('.item'),
             msnry = new Masonry('#container', {
                 // options
@@ -21,14 +22,22 @@ if (Meteor.isClient) {
             });
 
         setTimeout(function(){
-            spinnerOuter.velocity({opacity: 0},
+            spinnerInner.find('div').velocity(
                 {
-                    duration: 400,
-                    complete: function(){
-                        items.velocity({opacity: 1}, {
+                    backgroundColor: '#0ADA86'
+                },
+                {
+                    complete:function(){
+                        spinnerOuter.velocity({opacity: 0},
+                        {
                             duration: 400,
-                            complete:function(){
-                                items.find('h4').addClass('animated tada');
+                            complete: function(){
+                                items.velocity({opacity: 1}, {
+                                    duration: 400,
+                                    complete:function(){
+                                        items.find('h4').addClass('animated tada');
+                                    }
+                                });
                             }
                         });
                     }

@@ -27,22 +27,29 @@ Template.app.events({
                     easing: 'easeInOutExpo',
                     complete: function(){
                         container.addClass('itemExpanded').velocity(styles,
-                            {
-                                duration: 200,
-                                easing: 'easeInOutExpo',
-                                complete: function(){
-                                    console.log('fired');
-                                    container.find('.item-content').velocity({opacity: 1},
-                                        {
-                                            duration: 400,
-                                            easing: 'easeInOutExpo'
+                        {
+                            duration: 200,
+                            easing: 'easeInOutExpo',
+                            complete: function(){
+                                console.log('fired');
+                                container.find('.item-content').velocity(
+                                    {
+                                        opacity: 1
+                                    },
+                                    {
+                                        duration: 400,
+                                        easing: 'easeInOutExpo',
+                                        complete:function(){
+                                            $(this).fadeIn('slow').css('display', 'block');
                                         }
-                                    );
-                                }
-                            });
+                                    }
+                                );
+                            }
+                        });
                     }
                 }
             );
+
         } else {
             var originalStyles = Session.get('ExpandedItemStyles');
 
@@ -54,6 +61,7 @@ Template.app.events({
                     duration: 400,
                     easing: 'easeInOutExpo',
                     complete: function(){
+                        $(this).fadeOut('slow').css('display', 'none');
                         container.attr('style', originalStyles).removeClass('itemExpanded');
                     }
                 }

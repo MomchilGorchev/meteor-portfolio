@@ -247,7 +247,7 @@ h1{
   border: 5px double darken($theme-lightest, 20%);
   height: 100px;
   margin-bottom: 15px;
-  background: $theme-lightest;
+  background: url(img/itemBg.jpg) center center $theme-lightest;
   border-radius: 4px;
   box-shadow: 0 0 5px 1px $theme-lightest;
   @include vendor-transition(0.4s, ease);
@@ -255,7 +255,7 @@ h1{
     display: none;
   }
   .item-content{
-    opacity: 0;
+    display: none;
     margin-top: 55px;
     z-index:5;
     img{
@@ -301,6 +301,7 @@ h1{
     right: 5%;
     bottom: 5%;
     opacity:1!important;
+    background: $theme-lightest;
     @include vendor-transition(0.2s, ease-in-out);
     .closeExpandedItem{
       display: block;
