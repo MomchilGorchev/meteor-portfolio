@@ -84,6 +84,16 @@ Template.app.events({
                 }
             );
         }
+    },
+    'mouseover .item':function(e,t){
+        $(e.currentTarget).find('.explain')
+            .removeClass('animate fadeOutDown')
+            .addClass('animated fadeInUp');
+    },
+    'mouseout .item': function(e,t){
+        $(e.currentTarget).find('.explain')
+            .removeClass('animated fadeInUp')
+            .addClass('animated fadeOutDown');
     }
 });
 

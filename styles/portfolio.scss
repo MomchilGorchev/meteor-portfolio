@@ -280,20 +280,15 @@ h1{
   @include vendor-transition(0.4s, ease);
   &:hover{
     border-width: 25px;
-    .explain{
-      padding:10px;
-      border: 1px solid $theme-lighter;
-      font-size: 0.8em;
-      bottom: 60px;
-      display: block;
-      @include vendor-transition(0.4s, ease);
-    }
   }
   .explain{
+    padding:10px;
+    font-size: .8em;
+    border: 1px solid $theme-lighter;
     position: absolute;
     bottom: 40px;
     color: $theme-lighter;
-    display: none;
+    opacity:0
   }
   .closeExpandedItem{
     display: none;
