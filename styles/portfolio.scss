@@ -1,6 +1,9 @@
 /**
   * SASS Declarations for Meteor Portfolio
   */
+@import 'mixins';
+@import 'vars';
+
 @font-face {
   font-family: 'sinkin_sans';
   src: url('fonts/sinkinsans-300light-webfont.eot');
@@ -12,7 +15,7 @@
   font-weight: normal;
   font-style: normal;
 }
-//56915284-ekp3-4QykC4--6KaslRgHA.eot
+
 @font-face {
   font-family: 'fancy_font';
   src: url('fonts/56915284-ekp3-4QykC4--6KaslRgHA.eot');
@@ -24,69 +27,17 @@
   font-weight: normal;
   font-style: normal;
 }
-$spinner-bg: #BAD3D0;
-// Theme - Teal Steal - adobe kuler
-$theme-darkest: #1f1f1f;
-$theme-semi-darkest: #3b3b3b;
-$theme-light: #adadad;
-$theme-lighter: #dedede;
-$theme-lightest: #22c2bc;
-$header-bg: rgba(63, 68, 70, 0.81);
-// Morphing buttons
-$button-size : 3.5rem;
-$transition: .3s;
-
-//$images: ('img/itemBg.jpg', 'itemBg2.jpg');
-//$img: nth($images, random(length($images)));
 
 
-//Mixin block
-@mixin vendor-transition($duration: 0.5s, $effect: ease){
-  transition: all $duration $effect;
-  -webkit-transition: all $duration $effect;
-  -moz-transition: all $duration $effect;
-  -o-transition: all $duration $effect;
-}
-@mixin customise-animation($duration: 2s, $delay: 1.5s, $iterations: infinite) {
-  animation-duration: $duration;
-  animation-delay: $delay;
-  animation-iteration-count: $iterations;
-
-  -webkit-animation-duration: $duration;
-  -webkit-animation-delay: $delay;
-  -webkit-animation-iteration-count: $iterations;
-
-  -moz-animation-duration: $duration;
-  -moz-animation-delay: $delay;
-  -moz-animation-iteration-count: $iterations;
-
-  -o-animation-duration: $duration;
-  -o-animation-delay: $delay;
-  -o-animation-iteration-count: $iterations;
-}
-
-@mixin line {
-  display: inline-block;
-  width: $button-size;
-  height: $button-size/7;
-  background: $theme-lighter;
-  border-radius: $button-size/14;
-  transition: $transition;
-}
-@mixin center-div($width: 80%, $margin-up-down: 0){
-  float: none;
-  width: $width;
-  margin: $margin-up-down auto;
-}
-
+/* Main Styles */
+// Alter animation classes
 .custom-header-animation-no-delay{
   @include customise-animation(0.5s, 0s, 1);
 }
 .custom-header-animation-delay{
   @include customise-animation(0.5s, 0.5s, 1);
 }
-
-//Main styles
+// --------
 body {
   @include vendor-transition();
   box-sizing: border-box;
@@ -106,8 +57,49 @@ body {
     outline: none;
   }
 }
+h1{
+  color: ivory;
+  text-align: center;
+}
+.spinner {
+  margin: 30px auto;
+  width: 105px;
+  height: 125px;
+  text-align: center;
+  font-size: 10px;
+  div{
+    background-color: $spinner-bg;
+    height: 100%;
+    width: 6px;
+    display: inline-block;
+    margin-left: 7px;
+    -webkit-animation: stretchdelay 1.2s infinite ease-in-out;
+    animation: stretchdelay 1.2s infinite ease-in-out;
+    &:first-child{
+      margin-left:0;
+    }
+  }
+  .rect2 {
+    -webkit-animation-delay: -1.1s;
+    animation-delay: -1.1s;
+  }
+  .rect3 {
+    -webkit-animation-delay: -1.0s;
+    animation-delay: -1.0s;
+  }
+  .rect4 {
+    -webkit-animation-delay: -0.9s;
+    animation-delay: -0.9s;
+  }
+  .rect5 {
+    -webkit-animation-delay: -0.8s;
+    animation-delay: -0.8s;
+  }
+}
+/* End Main Styles */
 
 
+/* Header Styles */
 .app-header{
   width: 100%;
   height: 60px;
@@ -187,43 +179,10 @@ body {
     }
   }
 }
+/* End Header Styles */
 
-.spinner {
-  margin: 30px auto;
-  width: 105px;
-  height: 125px;
-  text-align: center;
-  font-size: 10px;
-  div{
-    background-color: $spinner-bg;
-    height: 100%;
-    width: 6px;
-    display: inline-block;
-    margin-left: 7px;
-    -webkit-animation: stretchdelay 1.2s infinite ease-in-out;
-    animation: stretchdelay 1.2s infinite ease-in-out;
-    &:first-child{
-      margin-left:0;
-    }
-  }
-  .rect2 {
-    -webkit-animation-delay: -1.1s;
-    animation-delay: -1.1s;
-  }
-  .rect3 {
-    -webkit-animation-delay: -1.0s;
-    animation-delay: -1.0s;
-  }
-  .rect4 {
-    -webkit-animation-delay: -0.9s;
-    animation-delay: -0.9s;
-  }
-  .rect5 {
-    -webkit-animation-delay: -0.8s;
-    animation-delay: -0.8s;
-  }
-}
 
+/* Footer Styles */
 .app-footer{
   width: 100%;
   height: 60px;
@@ -238,36 +197,21 @@ body {
     margin: 20px 35px;
   }
 }
-h1{
-  color: ivory;
-  text-align: center;
-}
+/* End Footer Styles */
+
+/* Specific styles */
 .about-content{
   &:after{
-    content: '';
-    background: url(img/itemBg2.jpg) $theme-lightest;
-    opacity: .25;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    position: absolute;
-    z-index: -1;
+    @include transparent-background('img/itemBg2.jpg');
   }
 }
 .projects-content{
   &:after{
-    content: '';
-    background: url(img/itemBg.jpg) $theme-lightest;
-    opacity: .25;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    position: absolute;
-    z-index: -1;
+    @include transparent-background('img/itemBg.jpg');
   }
 }
+
+/* Main Elements Styles */
 .item {
   padding: 20px;
   opacity: 0;
@@ -279,7 +223,14 @@ h1{
   box-shadow: 0 0 5px 1px $theme-lightest;
   @include vendor-transition(0.4s, ease);
   &:hover{
-    border-width: 25px;
+    border-bottom-width: 25px;
+    border-top-width: 50px;
+    cursor: pointer;
+    .explain{
+      opacity: 1;
+      bottom:70px;
+      @include vendor-transition(0.4s, ease);
+    }
   }
   .explain{
     padding:10px;
@@ -287,8 +238,10 @@ h1{
     border: 1px solid $theme-lighter;
     position: absolute;
     bottom: 40px;
+    left: 11%;
     color: $theme-lighter;
-    opacity:0
+    opacity:0;
+    @include vendor-transition(0.4s, ease);
   }
   .closeExpandedItem{
     display: none;
@@ -345,6 +298,9 @@ h1{
     @include vendor-transition(0.2s, ease-in-out);
     &:hover{
       border-width: 5px;
+      .explain{
+        opacity: 0;
+      }
     }
     &:after{
       content: '';
@@ -434,3 +390,4 @@ h1{
     }
   }
 }
+/* End Main Elements Styles */

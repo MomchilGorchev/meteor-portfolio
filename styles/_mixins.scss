@@ -1,0 +1,50 @@
+@import 'vars';
+
+@mixin vendor-transition($duration: 0.5s, $effect: ease){
+  transition: all $duration $effect;
+  -webkit-transition: all $duration $effect;
+  -moz-transition: all $duration $effect;
+  -o-transition: all $duration $effect;
+}
+@mixin customise-animation($duration: 2s, $delay: 1.5s, $iterations: infinite) {
+  animation-duration: $duration;
+  animation-delay: $delay;
+  animation-iteration-count: $iterations;
+
+  -webkit-animation-duration: $duration;
+  -webkit-animation-delay: $delay;
+  -webkit-animation-iteration-count: $iterations;
+
+  -moz-animation-duration: $duration;
+  -moz-animation-delay: $delay;
+  -moz-animation-iteration-count: $iterations;
+
+  -o-animation-duration: $duration;
+  -o-animation-delay: $delay;
+  -o-animation-iteration-count: $iterations;
+}
+
+@mixin line {
+  display: inline-block;
+  width: $button-size;
+  height: $button-size/7;
+  background: $theme-lighter;
+  border-radius: $button-size/14;
+  transition: $transition;
+}
+@mixin center-div($width: 80%, $margin-up-down: 0){
+  float: none;
+  width: $width;
+  margin: $margin-up-down auto;
+}
+@mixin transparent-background($img-path){
+  background: url($img-path) $theme-lighter;
+  content: '';
+  opacity: .25;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
+}

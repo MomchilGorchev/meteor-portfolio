@@ -85,15 +85,12 @@ Template.app.events({
             );
         }
     },
-    'mouseover .item':function(e,t){
-        $(e.currentTarget).find('.explain')
-            .removeClass('animate fadeOutDown')
-            .addClass('animated fadeInUp');
-    },
-    'mouseout .item': function(e,t){
-        $(e.currentTarget).find('.explain')
-            .removeClass('animated fadeInUp')
-            .addClass('animated fadeOutDown');
+    'click .item': function(e, t){
+        var toggle = $(e.currentTarget).find('.itemToggle');
+        toggle.addClass('animated tada');
+        setTimeout(function(){
+            toggle.removeClass('animated tada');
+        }, 650);
     }
 });
 
@@ -105,30 +102,11 @@ Template.appInitial.events({
            spinner = btnHolder.siblings('.main-spinner'),
            spinnerInner = spinner.find('.spinner'),
            headerText = btnHolder.siblings('.header-text');
-
-       spinner.velocity(
-           {
-               opacity: 1
-           },
-           {
-               duration: 200,
-               easing: 'easeInOutExpo'
-           }
-       ).addClass('animated fadeIn');
-
+       headerText.addClass('animated fadeOutUp custom-header-animation-no-delay');
+       btnHolder.addClass('animated fadeOutUp custom-header-animation-delay');
        setTimeout(function(){
-           spinnerInner.find('div').velocity({backgroundColor: '#0ADA86'},
-               {
-                   duration: 800,
-                   complete: function(){
-                       headerText.addClass('animated fadeOutUp custom-header-animation-no-delay');
-                       btnHolder.addClass('animated fadeOutUp custom-header-animation-delay');
-                       setTimeout(function(){
-                           Router.go('/app');
-                       }, 800);
-                   }
-               }
-           );
-       }, 1500);
+           Router.go('/app');
+       }, 800);
+
    }
 });
