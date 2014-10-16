@@ -62,7 +62,10 @@ Template.app.events({
                     easing: 'easeInOutExpo',
                     complete: function(){
                         $(this).fadeOut('slow').css('display', 'none');
-                        container.attr('style', originalStyles).removeClass('itemExpanded');
+                        container.attr('style', originalStyles);
+                        setTimeout(function(){
+                            container.removeClass('itemExpanded');
+                        }, 350);
                     }
                 }
             );
