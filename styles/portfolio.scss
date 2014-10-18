@@ -210,7 +210,26 @@ h1{
     @include transparent-background('img/itemBg.jpg');
   }
 }
-
+.skills-content{
+  &:after{
+    @include transparent-background('img/itemBg3.jpg');
+  }
+}
+.inspiration-content{
+  &:after{
+    @include transparent-background('img/itemBg4.jpg');
+  }
+}
+.hobbies-content{
+  &:after{
+    @include transparent-background('img/itemBg5.jpg');
+  }
+}
+.contacts-content{
+  &:after{
+    @include transparent-background('img/itemBg5.jpg');
+  }
+}
 /* Main Elements Styles */
 .item {
   padding: 20px;
