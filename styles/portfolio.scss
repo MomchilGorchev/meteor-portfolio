@@ -203,31 +203,61 @@ h1{
 .about-content{
   &:after{
     @include transparent-background('img/itemBg2.jpg');
+    @include vendor-transition(0.3s, ease);
+  }
+  &:hover:after{
+    @include vendor-transition(0.3s, ease);
+    @include scaleBgImage(1.2, 1.2);
   }
 }
 .projects-content{
   &:after{
     @include transparent-background('img/itemBg.jpg');
+    @include vendor-transition(0.3s, ease);
+  }
+  &:hover:after{
+    @include vendor-transition(0.3s, ease);
+    @include scaleBgImage(1.2, 1.2);
   }
 }
 .skills-content{
   &:after{
     @include transparent-background('img/itemBg3.jpg');
+    @include vendor-transition(0.3s, ease);
+  }
+  &:hover:after{
+    @include vendor-transition(0.3s, ease);
+    @include scaleBgImage(1.2, 1.2);
   }
 }
 .inspiration-content{
   &:after{
     @include transparent-background('img/itemBg4.jpg');
+    @include vendor-transition(0.3s, ease);
+  }
+  &:hover:after{
+    @include vendor-transition(0.3s, ease);
+    @include scaleBgImage(1.2, 1.2);
   }
 }
 .hobbies-content{
   &:after{
     @include transparent-background('img/itemBg5.jpg');
+    @include vendor-transition(0.3s, ease);
+  }
+  &:hover:after{
+    @include vendor-transition(0.3s, ease);
+    @include scaleBgImage(1.2, 1.2);
   }
 }
 .contacts-content{
   &:after{
-    @include transparent-background('img/itemBg5.jpg');
+    @include transparent-background('img/itemBg6.jpg');
+    @include vendor-transition(0.3s, ease);
+  }
+  &:hover:after{
+    @include vendor-transition(0.3s, ease);
+    @include scaleBgImage(1.2, 1.2);
   }
 }
 /* Main Elements Styles */
@@ -240,24 +270,36 @@ h1{
   margin-bottom: 15px;
   border-radius: 4px;
   box-shadow: 0 0 5px 1px $theme-lightest;
+  overflow: hidden;
   @include vendor-transition(0.4s, ease);
   &:hover{
     border-bottom-width: 25px;
     border-top-width: 50px;
     cursor: pointer;
+    h4{
+      font-size:40px;
+      @include vendor-transition(0.3s, ease);
+    }
     .explain{
       opacity: 1;
       bottom:70px;
       @include vendor-transition(0.4s, ease);
     }
+    button.lines-button{
+      margin: 5px;
+    }
   }
   .explain{
+    font-family: sinkin_sans;
     padding:10px;
     font-size: .8em;
     border: 1px solid $theme-lighter;
     position: absolute;
     bottom: 40px;
     left: 11%;
+    width:77%;
+    margin: 0 auto;
+    text-align: center;
     color: $theme-lighter;
     opacity:0;
     @include vendor-transition(0.4s, ease);
@@ -285,6 +327,7 @@ h1{
     margin: 20px 10px;
     font-size: 25px;
     text-transform: uppercase;
+    @include vendor-transition(0.3s, ease);
     @include customise-animation(1s, 0s, 2);
   }
   button.lines-button{
@@ -315,6 +358,9 @@ h1{
     opacity:1!important;
     background: $theme-lightest;
     @include vendor-transition(0.2s, ease-in-out);
+    h4{
+      font-size:40px;
+    }
     &:hover{
       border-width: 5px;
       .explain{
@@ -335,6 +381,7 @@ h1{
       display: block;
     }
     .item-content{
+      font-family: sinkin_sans;
       margin-top: 55px;
       z-index:5;
       img{
