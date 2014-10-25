@@ -5,54 +5,33 @@ Template.app.events({
     'click .itemToggle': function(event, template){
 
         var _this = $(event.currentTarget),
-            container = _this.closest('.item'),
-            styles = {
-                top: 0,
-                left: 0,
-                width: '100%',
-                height: '100%',
-                translateZ: 0
-            };
+            container = _this.closest('.item');
 
         if(!container.hasClass('itemExpanded')){
 
             Session.set('ExpandedItemStyles', container.attr('style'));
             _this.toggleClass('itemOpened, close');
-
-            $('.item').velocity(
+            $('.item:not("'+ container[0].className +'")').velocity(
+                {opacity: '0.2'},
                 {
-                    opacity: 0.2
-                },
-                {
-                    duration: 200,
-                    easing: 'easeInOutExpo',
-                    // Fading other elements completed
                     complete: function(){
-                        container.addClass('itemExpanded').velocity(styles,
+                        container.addClass('itemExpanded')
+                            .find('.item-content').velocity(
                             {
-                                duration: 500,
+                                opacity: 1
+                            },
+                            {
+                                duration: 400,
                                 easing: 'easeInOutExpo',
-                                // Expanding the clicked element completed
-                                complete: function(){
-                                    console.log('fired');
-                                    container.find('.item-content').velocity(
-                                        {
-                                            opacity: 1
-                                        },
-                                        {
-                                            duration: 400,
-                                            easing: 'easeInOutExpo',
-                                            complete:function(){
-                                                $(this).fadeIn('slow').css('display', 'block');
-                                            }
-                                        }
-                                    );
+                                complete:function(){
+                                    $(this).fadeIn('slow').css('display', 'block');
                                 }
                             }
                         );
                     }
                 }
             );
+
 
         } else {
             var originalStyles = Session.get('ExpandedItemStyles');
@@ -62,17 +41,17 @@ Template.app.events({
                     opacity: 0
                 },
                 {
-                    duration: 400,
+                    duration: 200,
                     easing: 'easeInOutExpo',
                     complete: function(){
                         $(this).fadeOut('slow').css('display', 'none');
                         container.attr('style', originalStyles);
-                        setTimeout(function(){
-                            container.removeClass('itemExpanded');
-                        }, 350);
+                        container.removeClass('itemExpanded');
+
                     }
                 }
             );
+
 
             $('.item').velocity(
                 {
@@ -83,7 +62,6 @@ Template.app.events({
                     easing: 'easeInOutExpo',
                     complete: function(){
                         _this.toggleClass('itemOpened, close');
-
                     }
                 }
             );
