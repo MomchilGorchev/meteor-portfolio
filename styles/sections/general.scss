@@ -1,0 +1,227 @@
+/**
+  General in-page rules
+*/
+@import '../components/mixins';
+@import '../components/vars';
+
+// --------
+body {
+  @include vendor-transition();
+  box-sizing: border-box;
+  background: $theme-darkest;
+  background-size: cover;
+  & *,
+  & *:before,
+  & *:after {
+    transform: translate3d(0,0,0);
+  }
+  .container{
+    @include vendor-transition();
+    opacity:1;
+  }
+  button:focus{
+    border: none;
+    outline: none;
+  }
+}
+h1{
+  color: ivory;
+  text-align: center;
+}
+.spinner {
+  margin: 30px auto;
+  width: 105px;
+  height: 125px;
+  text-align: center;
+  font-size: 10px;
+  div{
+    background-color: $spinner-bg;
+    height: 100%;
+    width: 6px;
+    display: inline-block;
+    margin-left: 7px;
+    -webkit-animation: stretchdelay 1.2s infinite ease-in-out;
+    animation: stretchdelay 1.2s infinite ease-in-out;
+    &:first-child{
+      margin-left:0;
+    }
+  }
+  .rect2 {
+    -webkit-animation-delay: -1.1s;
+    animation-delay: -1.1s;
+  }
+  .rect3 {
+    -webkit-animation-delay: -1.0s;
+    animation-delay: -1.0s;
+  }
+  .rect4 {
+    -webkit-animation-delay: -0.9s;
+    animation-delay: -0.9s;
+  }
+  .rect5 {
+    -webkit-animation-delay: -0.8s;
+    animation-delay: -0.8s;
+  }
+}
+/* End Main Styles */
+
+
+/* Header Styles */
+.app-header{
+  width: 100%;
+  height: 60px;
+  background: $theme-semi-darkest;
+  h1{
+    color: lighten($theme-light, 5%);
+    float: left;
+    text-align: left;
+    padding: 9px 0 0 10px;
+    font-family: sinkin_sans;
+    margin-top:0;
+    @include vendor-transition(0.2s, ease);
+  }
+  .socials{
+    float: right;
+    margin-top: 10px;
+    margin-right: 10px;
+    @include vendor-transition(0.2s, ease);
+    ul{
+      list-style-type: none;
+      li{
+        display: inline-block;
+        margin-right: 10px;
+        a{
+          color: $theme-light;
+          &:hover{
+            @include vendor-transition(0.2s, ease);
+            color: darken($theme-light, 17%);
+          }
+        }
+      }
+    }
+  }
+}
+/* Animated Header */
+.large-header {
+  position: relative;
+  width: 100%;
+  background: #333;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center center;
+  z-index: 1;
+  background-image: url('/img/wStars.jpg');
+  .main-title {
+    position: absolute;
+    width: 70%;
+    margin: 0;
+    padding: 0;
+    color: #f9f1e9;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate3d(-50%,-50%,0);
+    transform: translate3d(-50%,-50%,0);
+    text-transform: uppercase;
+    font-size: 4.2em;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    h1{
+      font-size: 1em;
+      background: $header-bg;
+    }
+    .thin {
+      font-weight: 200;
+    }
+    .enter-btn-holder {
+      @include center-div(155px, 20px);
+      height: 70px;
+      border-radius: 30px;
+      background: $header-bg;
+      #enterSite {
+        color: white;
+        display: block;
+        font-size: 25px;
+        padding-top: 12px;
+        padding-left: 7px;
+        cursor: pointer;
+        @include vendor-transition(0.4s ease);
+        &:hover{
+          color: darken(white, 30%);
+          @include vendor-transition(0.4s ease);
+        }
+      }
+    }
+    .main-spinner{
+      opacity: 0;
+      margin-bottom:-100px;
+    }
+  }
+}
+/* End Header Styles */
+
+
+/* Overlay styles */
+.overlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: $theme-lightest-low-opacity;
+  &-scale{
+    visibility: hidden;
+    opacity: 0;
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+    @include vendor-transition(0.2s, ease);
+  }
+  &-scale.open{
+    visibility: visible;
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    @include vendor-transition(0.4s, ease);
+  }
+  .overlay-close{
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    overflow: hidden;
+    border: none;
+    background: url(../img/cross.png) no-repeat center center;
+    text-indent: 200%;
+    color: transparent;
+    outline: none;
+    z-index: 100;
+  }
+  .item-content{
+    text-align: center;
+    position: relative;
+    top: 50%;
+    height: 60%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+}
+
+/* Footer Styles */
+.app-footer{
+  width: 100%;
+  height: 60px;
+  background: $theme-semi-darkest;
+  color: lighten($theme-light, 5%);
+  .signature{
+    float: right;
+    margin: 20px 35px;
+  }
+  .created{
+    float: left;
+    margin: 20px 35px;
+  }
+}
+/* End Footer Styles */
+

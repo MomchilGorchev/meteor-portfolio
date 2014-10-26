@@ -50,7 +50,7 @@
   z-index: -1;
 }
 
-@mixin scaleBgImage($valueX: 1.2, $valueY: 1.2){
+@mixin scaleElement($valueX: 1.2, $valueY: 1.2){
   -webkit-transform: scale($valueX, $valueY);
   -moz-transform: scale($valueX, $valueY);
   -ms-transform: scale($valueX, $valueY);
