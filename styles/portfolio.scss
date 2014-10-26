@@ -166,7 +166,6 @@
     font-size: 25px;
     text-transform: uppercase;
     @include vendor-transition(0.3s, ease);
-    @include customise-animation(1s, 0s, 2);
   }
   button.lines-button{
     background: transparent;

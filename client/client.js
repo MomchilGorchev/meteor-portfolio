@@ -35,7 +35,7 @@ if (Meteor.isClient) {
                                 items.velocity({opacity: 1}, {
                                     duration: 400,
                                     complete:function(){
-                                        items.find('h4').addClass('animated tada');
+                                        items.find('h4').addClass('animated fadeInUp');
                                     }
                                 });
                             }
