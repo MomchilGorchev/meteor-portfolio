@@ -6,17 +6,21 @@ Template.app.events({
     'click .trigger-overlay': function(e, t){
         var item = $(e.currentTarget).closest('.item'),
             content = item.find('.item-content').clone(),
+            title = item.find('.expand').clone(),
             overlay = $('#overlay');
 
+        overlay.append(title);
         overlay.append(content);
         overlay.addClass('open');
     },
 
     'click .overlay-close': function(e, t){
         var overlay = $(e.currentTarget).closest('#overlay'),
-            content = overlay.find('.item-content');
+            content = overlay.find('.item-content'),
+            title = overlay.find('h4');
 
         content.fadeOut().detach();
+        title.fadeOut().detach();
         overlay.removeClass('open').addClass('close');
     },
 

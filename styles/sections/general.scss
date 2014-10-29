@@ -3,6 +3,7 @@
 */
 @import '../components/mixins';
 @import '../components/vars';
+@import url(http://fonts.googleapis.com/css?family=Spinnaker);
 
 // --------
 body {
@@ -75,10 +76,13 @@ h1{
     color: lighten($theme-light, 5%);
     float: left;
     text-align: left;
-    padding: 9px 0 0 10px;
-    font-family: sinkin_sans;
+    padding: 11px 0 0 10px;
+    font-family: Spinnaker;
     margin-top:0;
     @include vendor-transition(0.2s, ease);
+    &:hover{
+      cursor: pointer;
+    }
   }
   .socials{
     float: right;
@@ -169,6 +173,7 @@ h1{
   height: 100%;
   top: 0;
   left: 0;
+  overflow: auto;
   z-index: 100;
   background: $theme-lightest-low-opacity;
   &-scale{
@@ -199,13 +204,35 @@ h1{
     outline: none;
     z-index: 100;
   }
+  h4{
+    margin: 20px;
+    position: absolute;
+    top: 0;
+    left: 3%;
+    font-size: 3em;
+    color: white;
+    font-family: fancy_font;
+    border-bottom:3px solid white;
+  }
   .item-content{
     text-align: center;
     position: relative;
-    top: 50%;
+    top: 45%;
     height: 60%;
     -webkit-transform: translateY(-50%);
     transform: translateY(-50%);
+    .content-img{
+      float: left;
+      width: 350px;
+      margin: 5px 15px;
+    }
+    .text{
+      font-family: Spinnaker;
+      text-align: left;
+      font-size: 1.156em;
+      margin: 15px;
+      text-shadow: 0 1px 0 $text-shadow;
+    }
   }
 }
 

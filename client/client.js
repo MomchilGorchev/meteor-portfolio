@@ -62,7 +62,7 @@ if (Meteor.isClient) {
                 target = {x: width/2, y: height/2};
 
                 largeHeader = document.getElementById('large-header');
-                largeHeader.style.height = height+'px';
+                largeHeader.style.height = height + 'px';
 
                 canvas = document.getElementById('demo-canvas');
                 canvas.width = width;
@@ -73,8 +73,8 @@ if (Meteor.isClient) {
                 points = [];
                 for(var x = 0; x < width; x = x + width/20) {
                     for(var y = 0; y < height; y = y + height/20) {
-                        var px = x + Math.random()*width/20;
-                        var py = y + Math.random()*height/20;
+                        var px = x + Math.random() * width/20;
+                        var py = y + Math.random() * height/20;
                         var p = {x: px, originX: px, y: py, originY: py };
                         points.push(p);
                     }
@@ -85,7 +85,7 @@ if (Meteor.isClient) {
                     var closest = [];
                     var p1 = points[i];
                     for(var j = 0; j < points.length; j++) {
-                        var p2 = points[j]
+                        var p2 = points[j];
                         if(!(p1 == p2)) {
                             var placed = false;
                             for(var k = 0; k < 5; k++) {
@@ -188,11 +188,15 @@ if (Meteor.isClient) {
             }
 
             function shiftPoint(p) {
-                TweenLite.to(p, 1+1*Math.random(), {x:p.originX-50+Math.random()*100,
-                    y: p.originY-50+Math.random()*100, ease:Circ.easeInOut,
-                    onComplete: function() {
-                        shiftPoint(p);
-                    }});
+                TweenLite.to(p, 1 + 1 * Math.random(),
+                    {
+                        x: p.originX-50+Math.random() * 100,
+                        y: p.originY-50+Math.random() * 100,
+                        ease: Circ.easeInOut,
+                        onComplete: function() {
+                            shiftPoint(p);
+                        }
+                    });
             }
 
             // Canvas manipulation
