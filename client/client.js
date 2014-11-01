@@ -4,6 +4,8 @@
 
 if (Meteor.isClient) {
 
+    Meteor.subscribe('projects');
+
     Template.app.rendered = function(){
 
         var spinnerOuter = $('.main-spinner'),

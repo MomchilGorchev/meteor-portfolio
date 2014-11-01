@@ -8,14 +8,13 @@
         <div class="item-content">
             <img src="img/ninja.jpg" class="content-img" alt="My photo"/>
             <div>
-                Sed cursus diam sem, ut congue dui sollicitudin eu.
-                Donec et ligula sed ipsum pharetra vestibulum vitae quis lorem.
-                Quisque eu turpis lacus. Phasellus sem urna, hendrerit vitae lacus
-                a, laoreet commodo felis. Duis maximus vel libero eu tincidunt.
-                Integer vel mi molestie massa ultricies finibus. Curabitur nisi
-                libero, faucibus vel felis at, auctor vehicula sem.
-                Cras aliquam tempus velit, sit amet condimentum ante ullamcorper nonS
-                uspendisse mollis purus nec lacus vestibulum hendrerit.
+                {{#each projectData}}
+                    <div class="project-item">
+                        <p>{{name}}</p>
+                        <p>{{url}}</p>
+                        <p>{{completed}}</p>
+                    </div>
+                {{/each}}
             </div>
         </div>
     </div>
