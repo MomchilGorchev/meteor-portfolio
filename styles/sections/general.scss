@@ -8,6 +8,7 @@
 // --------
 body {
   @include vendor-transition();
+  font-size: $main-font-size;
   box-sizing: border-box;
   background: $theme-darkest;
   background-size: cover;
@@ -86,7 +87,7 @@ h1{
   }
   .socials{
     float: right;
-    margin-top: 10px;
+    margin-top: 13px;
     margin-right: 10px;
     @include vendor-transition(0.2s, ease);
     ul{
@@ -215,6 +216,9 @@ h1{
     border-bottom:3px solid white;
   }
   .item-content{
+    width: 80%;
+    max-width: 900px;
+    @include center-div();
     text-align: center;
     position: relative;
     top: 45%;
@@ -229,7 +233,10 @@ h1{
     .text{
       font-family: Spinnaker;
       text-align: left;
-      font-size: 1.156em;
+      font-size: 18px;
+      line-height: 25px;
+      font-weight: bold;
+      color: $theme-darkest;
       margin: 15px;
       text-shadow: 0 1px 0 $text-shadow;
     }
