@@ -221,3 +221,49 @@
   }
 }
 /* End Main Elements Styles */
+
+
+.util-title{
+  text-align: center;
+}
+
+.login-box{
+  height: 150px;
+  margin-bottom: 50px;
+  width: 100px;
+  color: white;
+
+  li{
+    list-style-type: none;
+    a{
+      color: $theme-light;
+    }
+  }
+  .dropdown-menu{
+    left:-160%;
+    display: block;
+  }
+  .dropdown-toggle{
+    display:none;
+  }
+}
+
+.account-box{
+  float:right;
+  margin-bottom: 50px;
+  height: 30px;
+  width: 271px;
+  color: white;
+  li{
+    list-style-type: none;
+    a{
+      color: $theme-light;
+    }
+  }
+  .dropdown-menu{
+    left:-20%;
+  }
+}
+.cpanel-content{
+  margin-top: 50px;
+}

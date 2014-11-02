@@ -1,6 +1,34 @@
 <template name="cpanel">
-    <div>
-        <p>This is the Control Panel</p>
+    <div class="container account-box">
         {{> loginButtons}}
+    </div>
+
+    <h2>M.G. portfolio cPanel</h2>
+
+    <div class="container cpanel-content">
+        <h3>Add project</h3>
+        <form role="form">
+            <div class="form-group">
+                <label for="pr-name">Name</label>
+                <input type="text" class="form-control" id="pr-name" placeholder="Project's name">
+            </div>
+            <div class="form-group">
+                <label for="pr-name">Description</label>
+                <textarea class="form-control" id="pr-description" placeholder="Project's description" rows="4"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="pr-client">Client</label>
+                <input type="text" class="form-control" id="pr-client" placeholder="Client's name">
+            </div>
+            <div class="form-group">
+                <label for="pr-url">URL</label>
+                <input type="text" class="form-control" id="pr-url" placeholder="Website's URL">
+            </div>
+            <div class="form-group">
+                <label for="pr-completed">Completed on:</label>
+                <input type="text" class="form-control" id="pr-completed" placeholder="Completion date">
+            </div>
+            <button type="submit" class="btn btn-default">Submit</button>
+        </form>
     </div>
 </template>

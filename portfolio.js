@@ -3,3 +3,7 @@
  */
 
 Projects = new Meteor.Collection('projects');
+
+Accounts.config({
+    forbidClientAccountCreation : true
+});
