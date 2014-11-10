@@ -12,4 +12,6 @@ accounts-password
 mizzao:bootstrap-3
 iron:router
 fourseven:scss
+rajit:bootstrap3-datepicker
+mrt:moment
 

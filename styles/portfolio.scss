@@ -225,6 +225,7 @@
 
 .util-title{
   text-align: center;
+  color: $theme-light;
 }
 
 .login-box{
@@ -264,6 +265,28 @@
     left:-20%;
   }
 }
+.control-menu{
+  h2{
+    display: inline;
+    color: $theme-light;
+  }
+  padding: 10px;
+  ul.controls{
+    display: inline;
+    list-style-type: none;
+    li{
+      display: inline-block;
+      margin-left:10px;
+      a{
+        color: $theme-lighter;
+      }
+    }
+  }
+}
 .cpanel-content{
   margin-top: 50px;
+  label{
+    color: $theme-light;
+    font-family: Spinnaker;
+  }
 }

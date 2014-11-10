@@ -1,35 +1,61 @@
 <template name="cpanel">
     {{> header}}
-    <div class="container account-box">
-        {{> loginButtons}}
+
+    <div class="control-menu">
+        <h2>cPanel</h2>
+        <ul class="controls">
+            <li>
+                <a class="control-link" href="#" data-action="new-project">
+                    <i class="fa fa-plus-square-o fa-2x"></i>
+                </a>
+            </li>
+            <li>
+                <a class="control-link" href="#" data-action="new-project">
+                    <i class="fa fa-minus-square-o fa-2x"></i>
+                </a>
+            </li>
+            <li>
+                <a class="control-link" href="#" data-action="new-project">
+                    <i class="fa fa-gears fa-2x"></i>
+                </a>
+            </li>
+        </ul>
+        <div class="container account-box">
+            {{> loginButtons}}
+        </div>
     </div>
 
-    <h2>M.G. portfolio cPanel</h2>
-
     <div class="container cpanel-content">
-        <h3>Add project</h3>
-        <form role="form">
-            <div class="form-group">
-                <label for="pr-name">Name</label>
-                <input type="text" class="form-control" id="pr-name" placeholder="Project's name">
+        <form role="form" id="new-project">
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <div class="form-group">
+                    <label for="pr-name">Name</label>
+                    <input type="text" class="form-control" id="pr-name" placeholder="Project's name">
+                </div>
+                <div class="form-group">
+                    <label for="pr-category">Category</label>
+                    <input type="text" class="form-control" id="pr-category" placeholder="Project's name">
+                </div>
+                <div class="form-group">
+                    <label for="pr-description">Description</label>
+                    <textarea class="form-control" id="pr-description" placeholder="Project's description" rows="4"></textarea>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="pr-name">Description</label>
-                <textarea class="form-control" id="pr-description" placeholder="Project's description" rows="4"></textarea>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <div class="form-group">
+                    <label for="pr-client">Client</label>
+                    <input type="text" class="form-control" id="pr-client" placeholder="Client's name">
+                </div>
+                <div class="form-group">
+                    <label for="pr-url">URL</label>
+                    <input type="text" class="form-control" id="pr-url" placeholder="Website's URL">
+                </div>
+                <div class="form-group">
+                    <label for="pr-completed">Completed on:</label>
+                    <input type="text" class="form-control" id="pr-completed" placeholder="Completion date">
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
             </div>
-            <div class="form-group">
-                <label for="pr-client">Client</label>
-                <input type="text" class="form-control" id="pr-client" placeholder="Client's name">
-            </div>
-            <div class="form-group">
-                <label for="pr-url">URL</label>
-                <input type="text" class="form-control" id="pr-url" placeholder="Website's URL">
-            </div>
-            <div class="form-group">
-                <label for="pr-completed">Completed on:</label>
-                <input type="text" class="form-control" id="pr-completed" placeholder="Completion date">
-            </div>
-            <button type="submit" class="btn btn-default">Submit</button>
         </form>
     </div>
     <footer>
