@@ -8,17 +8,20 @@ if (Meteor.isClient) {
 
     Template.app.rendered = function(){
 
-        var spinnerOuter = $('.main-spinner'),
+        var windowHeight = window.innerHeight,
+            spinnerOuter = $('.main-spinner'),
             spinnerInner = spinnerOuter.find('.spinner'),
             items = $('.item'),
             msnry = new Masonry('#container', {
                 // options
                 isFitWidth: true,
                 itemSelector: '.item',
-                gutter: 20,
+                gutter: 80,
                 containerStyle:{
                     position: 'relative',
-                    width: '95%,',
+                    width: '100%,',
+                    height: windowHeight,
+                    maxWidth: '1340px',
                     margin: '50px auto'
                 }
             });
@@ -75,7 +78,7 @@ if (Meteor.isClient) {
                 points = [];
                 for(var x = 0; x < width; x = x + width/20) {
                     for(var y = 0; y < height; y = y + height/20) {
-                        var px = x + Math.random() * width/20;
+                        var px = x + Math.random() * width /20;
                         var py = y + Math.random() * height/20;
                         var p = {x: px, originX: px, y: py, originY: py };
                         points.push(p);
@@ -114,7 +117,7 @@ if (Meteor.isClient) {
 
                 // assign a circle to each point
                 for(var i in points) {
-                    var c = new Circle(points[i], 2+Math.random()*2, 'rgba(255,255,255,0.3)');
+                    var c = new Circle(points[i], 4+Math.random()*2, 'rgba(34, 194, 188, 0.94)');
                     points[i].circle = c;
                 }
             }
@@ -143,8 +146,7 @@ if (Meteor.isClient) {
             }
 
             function scrollCheck() {
-                if(document.body.scrollTop > height) animateHeader = false;
-                else animateHeader = true;
+                animateHeader = document.body.scrollTop > height || false;
             }
 
             function resize() {
@@ -168,13 +170,13 @@ if (Meteor.isClient) {
                     ctx.clearRect(0,0,width,height);
                     for(var i in points) {
                         // detect points in range
-                        if(Math.abs(getDistance(target, points[i])) < 4000) {
+                        if(Math.abs(getDistance(target, points[i])) < 5000) {
                             points[i].active = 0.3;
                             points[i].circle.active = 0.6;
-                        } else if(Math.abs(getDistance(target, points[i])) < 20000) {
+                        } else if(Math.abs(getDistance(target, points[i])) < 30000) {
                             points[i].active = 0.1;
                             points[i].circle.active = 0.3;
-                        } else if(Math.abs(getDistance(target, points[i])) < 40000) {
+                        } else if(Math.abs(getDistance(target, points[i])) < 50000) {
                             points[i].active = 0.02;
                             points[i].circle.active = 0.1;
                         } else {
@@ -190,10 +192,10 @@ if (Meteor.isClient) {
             }
 
             function shiftPoint(p) {
-                TweenLite.to(p, 1 + 1 * Math.random(),
+                TweenLite.to(p, 1 + Math.random(),
                     {
-                        x: p.originX-50+Math.random() * 100,
-                        y: p.originY-50+Math.random() * 100,
+                        x: p.originX-50 + Math.random() * 100,
+                        y: p.originY-50 + Math.random() * 100,
                         ease: Circ.easeInOut,
                         onComplete: function() {
                             shiftPoint(p);

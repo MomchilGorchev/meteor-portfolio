@@ -98,14 +98,22 @@
     @include scaleElement(1.2, 1.2);
   }
 }
+div.main-content{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  max-width: 1325px;
+  margin: 150px auto;
+}
 /* Main Elements Styles */
 .item {
+  float: left;
   padding: 20px;
   opacity: 0;
   width: 350px;
   border: 5px double darken($theme-lightest, 20%);
   height: 100px;
-  margin-bottom: 15px;
+  margin-bottom: 50px;
   border-radius: 4px;
   box-shadow: 0 0 5px 1px $theme-lightest;
   overflow: hidden;
