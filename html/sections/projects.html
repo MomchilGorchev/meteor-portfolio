@@ -6,13 +6,25 @@
         <h4 class="expand">Projects</h4>
         <p class="explain">Timeline of my latest work</p>
         <div class="item-content">
-            <img src="img/ninja.jpg" class="content-img" alt="My photo"/>
             <div>
                 {{#each projectData}}
                     <div class="project-item">
-                        <p>{{name}}</p>
-                        <p>{{url}}</p>
-                        <p>{{completed}}</p>
+
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                            <h5 class="name"><strong><i class="fa fa-desktop"></i> </strong>{{name}}</h5>
+                            <p class="category"><strong><i class="fa fa-cubes "></i> Category:  </strong> {{category}}</p>
+                            <p class="desc"><strong><i class="fa fa-info-circle "></i> Description: </strong>{{desc}}</p>
+                            <p class="client"><strong><i class="fa fa-child "></i> Client: </strong>{{client}}</p>
+                            <!--<p><strong></strong>{{listedOn}}</p>-->
+                        </div>
+
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                            <!--<img class="project-img" src="{{imgUrl}}" alt="{{name}} Media" />-->
+                            <img class="project-img img-thumbnail" src="http://lorempixel.com/400/200" alt="{{name}} Media" />
+                            <p class="url"><strong><i class="fa fa-globe "></i> </strong>{{url}}</p>
+
+                        </div>
+
                     </div>
                 {{/each}}
             </div>
