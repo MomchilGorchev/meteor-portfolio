@@ -11,20 +11,27 @@ Template.cpanel.events({
         e.preventDefault();
 
         var data = {
-            name: t.find('#pr-name').value,
-            category: t.find('#pr-category').value,
-            desc: t.find('#pr-description').value,
-            client: t.find('#pr-client').value,
-            url: t.find('#pr-url').value,
-            completedOn: t.find('#pr-completed').value,
+            name: t.find('#pr-name').value || 'Demo Project',
+            category: t.find('#pr-category').value || 'Internal Project',
+            desc: t.find('#pr-description').value || 'Demo',
+            client: t.find('#pr-client').value || 'Self',
+            url: t.find('#pr-url').value || 'http://non-existing-website.io',
+            completedOn: t.find('#pr-completed').value || moment(),
             listedOn: +moment().format('X'),
-            imgUrl: 'img/project-x.jpg'
+            imgUrl: t.find('#pr-imgurl').value || 'img/project-x.jpg'
         };
 
-        Meteor.call('createProject', data, function(err, res){
+        Meteor.call('createProject', data, function(res, err){
             err ? console.log('Error occurred')
                 : console.log('Success')
         });
         console.log(data);
+    },
+
+    'click #clear-collection': function(e, t){
+        Meteor.call('clearCollection', function(res, err){
+            err ? console.log('Error occurred')
+                : console.log('Success')
+        });
     }
 });

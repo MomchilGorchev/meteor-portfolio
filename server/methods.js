@@ -18,6 +18,10 @@ Meteor.startup(function(){
            else{
                throw new Meteor.Error('422', 'Insufficient data')
            }
+       },
+
+       clearCollection: function(){
+           Projects.remove({});
        }
     });
 });

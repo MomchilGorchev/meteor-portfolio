@@ -11,21 +11,7 @@ if (Meteor.isClient) {
         var windowHeight = window.innerHeight,
             spinnerOuter = $('.main-spinner'),
             spinnerInner = spinnerOuter.find('.spinner'),
-            items = $('.item'),
-            msnry = new Masonry('#container', {
-                // options
-                isFitWidth: true,
-                itemSelector: '.item',
-                gutter: 80,
-                containerStyle:{
-                    position: 'relative',
-                    width: '100%,',
-                    height: windowHeight,
-                    maxWidth: '1340px',
-                    margin: '50px auto'
-                }
-            });
-
+            items = $('.item');
         setTimeout(function(){
             spinnerInner.find('div').velocity(
                 {
@@ -37,9 +23,12 @@ if (Meteor.isClient) {
                         {
                             duration: 400,
                             complete: function(){
+                                console.log('Welcome to the main page!');
+                                spinnerOuter.css('display', 'none');
                                 items.velocity({opacity: 1}, {
-                                    duration: 400,
+                                    duration: 300,
                                     complete:function(){
+                                        console.log('This is just an easter egg ;)');
                                         items.find('h4').addClass('animated fadeInUp');
                                     }
                                 });
@@ -59,7 +48,7 @@ if (Meteor.isClient) {
             // Main
             initHeader();
             initAnimation();
-            addListeners();
+            //addListeners();
 
             function initHeader() {
                 width = window.innerWidth;
@@ -76,10 +65,10 @@ if (Meteor.isClient) {
 
                 // create points
                 points = [];
-                for(var x = 0; x < width; x = x + width/30) {
-                    for(var y = 0; y < height; y = y + height/30) {
-                        var px = x + Math.random() * width /30;
-                        var py = y + Math.random() * height/30;
+                for(var x = 0; x < width; x = x + width/35) {
+                    for(var y = 0; y < height; y = y + height/40) {
+                        var px = x + Math.random() * width / 35;
+                        var py = y + Math.random() * height/ 50;
                         var p = {x: px, originX: px, y: py, originY: py };
                         points.push(p);
                     }
@@ -121,41 +110,6 @@ if (Meteor.isClient) {
                     points[i].circle = c;
                 }
             }
-
-            //Event handling
-//            function addListeners() {
-//                if(!('ontouchstart' in window)) {
-//                    window.addEventListener('mousemove', mouseMove);
-//                }
-//                window.addEventListener('scroll', scrollCheck);
-//                window.addEventListener('resize', resize);
-//            }
-//
-//            function mouseMove(e) {
-//                var posx = posy = 0;
-//                if (e.pageX || e.pageY) {
-//                    posx = e.pageX;
-//                    posy = e.pageY;
-//                }
-//                else if (e.clientX || e.clientY)    {
-//                    posx = e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft;
-//                    posy = e.clientY + document.body.scrollTop + document.documentElement.scrollTop;
-//                }
-//                target.x = posx;
-//                target.y = posy;
-//            }
-//
-//            function scrollCheck() {
-//                animateHeader = document.body.scrollTop > height || false;
-//            }
-//
-//            function resize() {
-//                width = window.innerWidth;
-//                height = window.innerHeight;
-//                largeHeader.style.height = height+'px';
-//                canvas.width = width;
-//                canvas.height = height;
-//            }
 
             // animation
             function initAnimation() {

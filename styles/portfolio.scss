@@ -101,19 +101,23 @@
 div.main-content{
   position: relative;
   width: 100%;
-  height: 100%;
   max-width: 1325px;
-  margin: 150px auto;
+  margin: 0px auto;
+  #container{
+    width: 100%;
+    margin:85px auto auto;
+  }
 }
 /* Main Elements Styles */
 .item {
   float: left;
+  position: relative;
   padding: 20px;
+  margin: 50px 3.15%;
   opacity: 0;
-  width: 350px;
+  width: 27%;
   border: 5px double darken($theme-lightest, 20%);
   height: 100px;
-  margin-bottom: 50px;
   border-radius: 4px;
   box-shadow: 0 0 5px 1px $theme-lightest;
   overflow: hidden;
@@ -121,6 +125,7 @@ div.main-content{
   &:hover{
     border-bottom-width: 25px;
     cursor: pointer;
+    overflow: hidden;
     h4{
       font-size:40px;
       @include vendor-transition(0.4s, ease);
@@ -133,6 +138,9 @@ div.main-content{
     button.lines-button{
       margin: 5px;
     }
+  }
+  h4{
+    opacity: 0;
   }
   .explain{
     font-family: sinkin_sans;

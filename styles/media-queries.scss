@@ -2,7 +2,19 @@
   Responsive rules
 */
 
-@media screen and (max-width: 600px){
+@media screen and (max-width: 678px){
+  div.main-content.container{
+    margin: 100px auto 75px auto;
+  }
+  div.item.h3{
+    width: 97%;
+    margin: 30px 10px;
+    &:hover{
+      h4{
+        font-size: 30px;
+      }
+    }
+  }
   div.app-header{
     height: 125px;
     .socials{
@@ -29,5 +41,27 @@
 @media only screen and (max-width : 768px) {
   .main-title {
     font-size: 3em;
+  }
+}
+
+@media only screen and (max-width : 1080px) {
+  div.item{
+    width: 47%;
+    margin: 30px 10px;
+    &:hover{
+      h4{
+        font-size: 30px;
+      }
+    }
+    &:last-child:after{
+      clear: both;
+    }
+  }
+}
+
+@media only screen and (min-width : 1080px) and (max-width: 1280px) {
+  div.item.h3{
+    width: 31%;
+    margin: 50px 1.15%;
   }
 }
