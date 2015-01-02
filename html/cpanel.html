@@ -26,42 +26,74 @@
     </div>
 
     <div class="container cpanel-content">
-        <form role="form" id="new-project">
-            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                <div class="form-group">
-                    <label for="pr-name">Name</label>
-                    <input type="text" class="form-control" id="pr-name" placeholder="Project's name">
+        <div class="container" id="new-project-box">
+            <h2><i class="fa fa-plus-circle"></i> New project</h2>
+            <hr>
+            <form role="form" id="new-project">
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <div class="form-group">
+                        <label for="pr-name">Name</label>
+                        <input type="text" class="form-control" id="pr-name" placeholder="Project's name">
+                    </div>
+                    <div class="form-group">
+                        <label for="pr-category">Category</label>
+                        <input type="text" class="form-control" id="pr-category" placeholder="Project's category">
+                    </div>
+                    <div class="form-group">
+                        <label for="pr-description">Description</label>
+                        <textarea class="form-control" id="pr-description" placeholder="Project's description" rows="4"></textarea>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="pr-category">Category</label>
-                    <input type="text" class="form-control" id="pr-category" placeholder="Project's category">
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <div class="form-group">
+                        <label for="pr-imgurl">Image path</label>
+                        <input type="text" class="form-control" id="pr-imgurl" placeholder="Project's category">
+                    </div>
+                    <div class="form-group">
+                        <label for="pr-client">Client</label>
+                        <input type="text" class="form-control" id="pr-client" placeholder="Client's name">
+                    </div>
+                    <div class="form-group">
+                        <label for="pr-url">URL</label>
+                        <input type="text" class="form-control" id="pr-url" placeholder="Website's URL">
+                    </div>
+                    <div class="form-group">
+                        <label for="pr-completed">Completed on:</label>
+                        <input type="text" class="form-control" id="pr-completed" placeholder="Completion date">
+                    </div>
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-plus-circle"></i> Submit</button>
                 </div>
-                <div class="form-group">
-                    <label for="pr-description">Description</label>
-                    <textarea class="form-control" id="pr-description" placeholder="Project's description" rows="4"></textarea>
-                </div>
+            </form>
+        </div>
+
+        <div class="container" id="erase-project-data">
+            <h2><i class="fa fa-minus-circle"></i> Erase projects</h2>
+            <hr>
+            <div class="col-lg-12 col-xs-12">
+                <h4>Warning! This will erase all published projects!</h4>
                 <button type="button" id="clear-collection" class="btn btn-primary"><i class="fa fa-warning"></i> Delete projects</button>
             </div>
-            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        </div>
+
+        <div class="container" id="new-skill-form">
+            <h2><i class="fa fa-plus-circle"></i> New skill</h2>
+            <hr>
+            <form role="form" id="new-skill">
                 <div class="form-group">
-                    <label for="pr-imgurl">Image path</label>
-                    <input type="text" class="form-control" id="pr-imgurl" placeholder="Project's category">
+                    <label for="skill-name">Skill</label>
+                    <input type="text" class="form-control" id="skill-name" placeholder="New skill">
                 </div>
                 <div class="form-group">
-                    <label for="pr-client">Client</label>
-                    <input type="text" class="form-control" id="pr-client" placeholder="Client's name">
+                    <label for="skill-level">Level of competency</label>
+                    <input type="text" class="form-control" id="skill-level" placeholder="Level of competency">
                 </div>
                 <div class="form-group">
-                    <label for="pr-url">URL</label>
-                    <input type="text" class="form-control" id="pr-url" placeholder="Website's URL">
-                </div>
-                <div class="form-group">
-                    <label for="pr-completed">Completed on:</label>
-                    <input type="text" class="form-control" id="pr-completed" placeholder="Completion date">
+                    <label for="skill-description">Description</label>
+                    <textarea class="form-control" id="skill-description" placeholder="Skill description" rows="4"></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary"><i class="fa fa-plus-circle"></i> Submit</button>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
     <footer>
         {{> footer}}

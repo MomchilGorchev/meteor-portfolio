@@ -1,7 +1,7 @@
 /**
   * SASS Declarations for Meteor Portfolio
   */
-@import 'sections/general.scss';
+@import 'components/mixins';
 
 @font-face {
   font-family: 'sinkin_sans';
@@ -105,7 +105,7 @@ div.main-content{
   margin: 0px auto;
   #container{
     width: 100%;
-    margin:85px auto auto;
+    margin:165px auto auto;
   }
 }
 /* Main Elements Styles */
@@ -113,9 +113,9 @@ div.main-content{
   float: left;
   position: relative;
   padding: 20px;
-  margin: 50px 3.15%;
+  margin: 30px 1.15%;
   opacity: 0;
-  width: 27%;
+  width: 31%;
   border: 5px double darken($theme-lightest, 20%);
   height: 100px;
   border-radius: 4px;
@@ -126,6 +126,7 @@ div.main-content{
     border-bottom-width: 25px;
     cursor: pointer;
     overflow: hidden;
+    box-shadow: $item-shadow;
     h4{
       font-size:40px;
       @include vendor-transition(0.4s, ease);
@@ -304,5 +305,21 @@ div.main-content{
   label{
     color: $theme-light;
     font-family: Spinnaker;
+  }
+  h2{
+    color: $theme-light;
+    font-family: Spinnaker;
+  }
+  #new-project-box{
+    margin: 20px auto;
+    border: 2px solid rgb(111, 207, 111);
+  }
+  #erase-project-data{
+    border: 2px solid rgb(192, 104, 104);
+    color: $theme-light;
+  }
+  #new-skill-form{
+    border: 2px solid rgb(172, 172, 224);
+    margin: 20px auto 80px;
   }
 }

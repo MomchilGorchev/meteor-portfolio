@@ -29,9 +29,14 @@ Template.cpanel.events({
     },
 
     'click #clear-collection': function(e, t){
-        Meteor.call('clearCollection', function(res, err){
-            err ? console.log('Error occurred')
-                : console.log('Success')
-        });
+        if(!confirm('Are you sure you want to delete all projects?')){
+            return false
+        }
+        else{
+            Meteor.call('clearCollection', function(res, err){
+                err ? console.log('Error occurred')
+                    : console.log('Success')
+            });
+        }
     }
 });

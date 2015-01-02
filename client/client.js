@@ -65,10 +65,10 @@ if (Meteor.isClient) {
 
                 // create points
                 points = [];
-                for(var x = 0; x < width; x = x + width/35) {
-                    for(var y = 0; y < height; y = y + height/40) {
-                        var px = x + Math.random() * width / 35;
-                        var py = y + Math.random() * height/ 50;
+                for(var x = 0; x < width; x = x + width / 30) {
+                    for(var y = 0; y < height; y = y + height / 30) {
+                        var px = x + Math.random() * width / 30;
+                        var py = y + Math.random() * height / 30;
                         var p = {x: px, originX: px, y: py, originY: py };
                         points.push(p);
                     }
@@ -106,7 +106,7 @@ if (Meteor.isClient) {
 
                 // assign a circle to each point
                 for(var i in points) {
-                    var c = new Circle(points[i], 4+Math.random()*3, 'rgba(34, 194, 188, 0.94)');
+                    var c = new Circle(points[i], 4+Math.random()*3, 'rgba(234, 224, 218, 0.94)');
                     points[i].circle = c;
                 }
             }
@@ -146,11 +146,11 @@ if (Meteor.isClient) {
             }
 
             function shiftPoint(p) {
-                TweenLite.to(p, 1 + Math.random(),
+                TweenLite.to(p, 5,
                     {
-                        x: p.originX-80 + Math.random() * 100,
-                        y: p.originY-80 + Math.random() * 100,
-                        ease: Cubic.easeInOut,
+                        x: p.originX+80 + Math.random() * 150,
+                        y: p.originY+80 + Math.random() * 150,
+                        ease: Linear.ease,
                         onComplete: function() {
                             shiftPoint(p);
                         }
@@ -164,7 +164,7 @@ if (Meteor.isClient) {
                     ctx.beginPath();
                     ctx.moveTo(p.x, p.y);
                     ctx.lineTo(p.closest[i].x, p.closest[i].y);
-                    ctx.strokeStyle = 'rgba(156,217,249,'+ p.active+')';
+                    ctx.strokeStyle = 'rgba(217, 234, 244,'+ p.active+')';
                     ctx.stroke();
                 }
             }
@@ -182,7 +182,7 @@ if (Meteor.isClient) {
                 this.draw = function() {
                     if(!_this.active) return;
                     ctx.beginPath();
-                    ctx.arc(_this.pos.x, _this.pos.y, _this.radius, 0, 3 * Math.PI, false);
+                    ctx.arc(_this.pos.x, _this.pos.y, _this.radius, 0, 2 * Math.PI, false);
                     ctx.fillStyle = 'rgba(156,217,249,'+ _this.active+')';
                     ctx.fill();
                 };

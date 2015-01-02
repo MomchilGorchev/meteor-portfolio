@@ -7,12 +7,14 @@ $theme-lighter: #dedede;
 $theme-lightest: #22c2bc;
 $theme-lightest-low-opacity: rgba(34, 194, 188, 0.94);
 $header-bg: rgba(63, 68, 70, 0.81);
+$img-fallback: rgba(31, 31, 31, 1);
 // Morphing buttons
 $button-size : 3.5rem;
 $transition: .3s;
 // Stand alone vars
 $spinner-bg: #BAD3D0;
+$hr-bg: #55585E;
 // --------
 $text-shadow: #9EAEC7;
-
+$item-shadow: 0px 1px 14px 0px rgb(101, 123, 119);
 $main-font-size: 16px;

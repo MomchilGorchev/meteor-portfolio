@@ -39,7 +39,7 @@
 }
 @mixin transparent-background($img-path){
   background-size: cover;
-  background: url($img-path) $theme-lighter;
+  background: url($img-path) no-repeat center center $img-fallback;
   content: '';
   opacity: .25;
   top: 0;
@@ -48,6 +48,13 @@
   right: 0;
   position: absolute;
   z-index: -1;
+}
+@mixin apply-filter($filter, $amount){
+  -webkit-filter: #{$filter}(#{$amount});
+  -moz-filter: #{$filter}(#{$amount});
+  -o-filter: #{$filter}(#{$amount});
+  -ms-filter: #{$filter}(#{$amount});
+  filter: #{$filter}(#{$amount});
 }
 
 @mixin scaleElement($valueX: 1.2, $valueY: 1.2){

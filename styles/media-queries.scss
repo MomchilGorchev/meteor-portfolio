@@ -2,10 +2,7 @@
   Responsive rules
 */
 
-@media screen and (max-width: 678px){
-  div.main-content.container{
-    margin: 100px auto 75px auto;
-  }
+@media screen and (max-width: 767px){
   div.item.h3{
     width: 97%;
     margin: 30px 10px;
@@ -19,7 +16,7 @@
     height: 125px;
     .socials{
       float: none;
-      width: 342px;
+      width: 315px;
       margin: 20px auto;
     }
     h1{
@@ -57,11 +54,30 @@
       clear: both;
     }
   }
+  footer.main-footer{
+    position: static;
+  }
 }
 
 @media only screen and (min-width : 1080px) and (max-width: 1280px) {
   div.item.h3{
     width: 31%;
-    margin: 50px 1.15%;
+    margin: 30px 1.15%;
+  }
+}
+
+@media only screen and (max-width: 570px){
+  footer.main-footer{
+    div.app-footer{
+      height: 105px;
+      padding-top: 1px;
+      p{
+        float:none;
+        text-align: center;
+        &.signature{
+          margin: 0
+        }
+      }
+    }
   }
 }

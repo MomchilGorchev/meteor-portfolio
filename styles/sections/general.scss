@@ -2,7 +2,6 @@
   General in-page rules
 */
 @import '../components/mixins';
-@import '../components/vars';
 @import url(http://fonts.googleapis.com/css?family=Spinnaker);
 
 // --------
@@ -28,6 +27,9 @@ body {
     border: none;
     outline: none;
   }
+}
+hr{
+  border-top: 1px solid $hr-bg;
 }
 h1{
   color: ivory;
@@ -121,7 +123,7 @@ h1{
   background-size: cover;
   background-position: center center;
   z-index: 1;
-  background-image: url('/img/wStars.jpg');
+  background-image: url('/img/milky-way.jpg');
   .main-title {
     position: absolute;
     width: 70%;
