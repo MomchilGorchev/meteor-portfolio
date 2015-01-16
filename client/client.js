@@ -128,11 +128,11 @@ if (Meteor.isClient) {
                             points[i].active = 0.3;
                             points[i].circle.active = 0.6;
                         } else if(Math.abs(getDistance(target, points[i])) < 50000) {
-                            points[i].active = 0.1;
-                            points[i].circle.active = 0.3;
+                            points[i].active = 0.4;
+                            points[i].circle.active = 0.7;
                         } else if(Math.abs(getDistance(target, points[i])) < 60000) {
-                            points[i].active = 0.02;
-                            points[i].circle.active = 0.1;
+                            points[i].active = 0.2;
+                            points[i].circle.active = 0.5;
                         } else {
                             points[i].active = 0;
                             points[i].circle.active = 0;
@@ -146,11 +146,11 @@ if (Meteor.isClient) {
             }
 
             function shiftPoint(p) {
-                TweenLite.to(p, 5,
+                TweenLite.to(p,1.5,
                     {
-                        x: p.originX+80 + Math.random() * 150,
-                        y: p.originY+80 + Math.random() * 150,
-                        ease: Linear.ease,
+                        x: p.originX + 80 + Math.random() * 250,
+                        y: p.originY + 80 + Math.random() * 250,
+                        ease: Linear.easeInOut,
                         onComplete: function() {
                             shiftPoint(p);
                         }
@@ -168,7 +168,6 @@ if (Meteor.isClient) {
                     ctx.stroke();
                 }
             }
-
             function Circle(pos,rad,color) {
                 var _this = this;
 
