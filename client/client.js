@@ -13,29 +13,27 @@ if (Meteor.isClient) {
             spinnerInner = spinnerOuter.find('.spinner'),
             items = $('.item');
         setTimeout(function(){
-            spinnerInner.find('div').velocity(
+
+            spinnerOuter.velocity(
                 {
-                    backgroundColor: '#0ADA86'
+                    opacity: 0
                 },
                 {
-                    complete:function(){
-                        spinnerOuter.velocity({opacity: 0},
-                        {
-                            duration: 400,
-                            complete: function(){
-                                console.log('Welcome to the main page!');
-                                spinnerOuter.css('display', 'none');
-                                items.velocity({opacity: 1}, {
-                                    duration: 300,
-                                    complete:function(){
-                                        console.log('This is just an easter egg ;)');
-                                        items.find('h4').addClass('animated fadeInUp');
-                                    }
-                                });
+                    duration: 400,
+                    complete: function(){
+                        console.log('Welcome to the main page!');
+                        spinnerOuter.css('display', 'none');
+                        items.velocity({opacity: 1}, {
+                            duration: 300,
+                            complete:function(){
+                                console.log('This is just an easter egg ;)');
+                                items.find('h4').addClass('animated fadeInUp');
                             }
                         });
                     }
-                });
+                }
+            );
+
         }, 1300);
     };
 
@@ -82,7 +80,7 @@ if (Meteor.isClient) {
                         var p2 = points[j];
                         if(!(p1 == p2)) {
                             var placed = false;
-                            for(var k = 0; k < 5; k++) {
+                            for(var k = 0; k < 15; k++) {
                                 if(!placed) {
                                     if(closest[k] == undefined) {
                                         closest[k] = p2;
@@ -91,7 +89,7 @@ if (Meteor.isClient) {
                                 }
                             }
 
-                            for(var k = 0; k < 5; k++) {
+                            for(var k = 0; k < 15; k++) {
                                 if(!placed) {
                                     if(getDistance(p1, p2) < getDistance(p1, closest[k])) {
                                         closest[k] = p2;
@@ -138,7 +136,7 @@ if (Meteor.isClient) {
                             points[i].circle.active = 0;
                         }
 
-                        drawLines(points[i]);
+                        //drawLines(points[i]);
                         points[i].circle.draw();
                     }
                 }
@@ -158,16 +156,16 @@ if (Meteor.isClient) {
             }
 
             // Canvas manipulation
-            function drawLines(p) {
-                if(!p.active) return;
-                for(var i in p.closest) {
-                    ctx.beginPath();
-                    ctx.moveTo(p.x, p.y);
-                    ctx.lineTo(p.closest[i].x, p.closest[i].y);
-                    ctx.strokeStyle = 'rgba(217, 234, 244,'+ p.active+')';
-                    ctx.stroke();
-                }
-            }
+//            function drawLines(p) {
+//                if(!p.active) return;
+//                for(var i in p.closest) {
+//                    ctx.beginPath();
+//                    ctx.moveTo(p.x, p.y);
+//                    ctx.lineTo(p.closest[i].x, p.closest[i].y);
+//                    ctx.strokeStyle = 'rgba(217, 234, 244,'+ p.active+')';
+//                    ctx.stroke();
+//                }
+//            }
             function Circle(pos,rad,color) {
                 var _this = this;
 

@@ -5,6 +5,12 @@
 @import url(http://fonts.googleapis.com/css?family=Spinnaker);
 
 // --------
+*{
+  @include vendor-transition();
+  &:hover{
+    @include vendor-transition();
+  }
+}
 html, body{
   height: 100%;
 }
@@ -35,39 +41,36 @@ h1{
   color: ivory;
   text-align: center;
 }
-.spinner {
-  margin: 80px auto 30px;
-  width: 105px;
-  height: 125px;
-  text-align: center;
-  font-size: 10px;
-  div{
-    background-color: $spinner-bg;
-    height: 100%;
-    width: 6px;
-    display: inline-block;
-    margin-left: 7px;
-    -webkit-animation: stretchdelay 1.2s infinite ease-in-out;
-    animation: stretchdelay 1.2s infinite ease-in-out;
-    &:first-child{
-      margin-left:0;
+.spinner-circle{
+  position: relative;
+  width: 100px;
+  height: 100px;
+  border: 10px solid transparent;
+  margin: 200px auto;
+  border-top-color: #4C5564;
+  border-bottom-color: #4C5564;
+  border-radius: 180px;
+  .spinner-inner{
+    position:absolute;
+    top: -190px;
+    left: 10px;
+    width:60px;
+    height: 60px;
+    border: 5px solid  white;
+    margin: 200px auto;
+    border-top-color: transparent;
+    border-bottom-color: transparent;
+    border-radius: 180px;
+    .core{
+      width:30px;
+      height:30px;
+      background: darken(white, 20%);
+      border-radius:180px;
+      position:absolute;
+      top: 10px;
+      left: 10px;
+      box-shadow: 0px 0px 4px 1px white;
     }
-  }
-  .rect2 {
-    -webkit-animation-delay: -1.1s;
-    animation-delay: -1.1s;
-  }
-  .rect3 {
-    -webkit-animation-delay: -1.0s;
-    animation-delay: -1.0s;
-  }
-  .rect4 {
-    -webkit-animation-delay: -0.9s;
-    animation-delay: -0.9s;
-  }
-  .rect5 {
-    -webkit-animation-delay: -0.8s;
-    animation-delay: -0.8s;
   }
 }
 /* End Main Styles */
