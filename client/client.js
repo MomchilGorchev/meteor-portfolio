@@ -63,10 +63,10 @@ if (Meteor.isClient) {
 
                 // create points
                 points = [];
-                for(var x = 0; x < width; x = x + width / 30) {
-                    for(var y = 0; y < height; y = y + height / 30) {
-                        var px = x + Math.random() * width / 30;
-                        var py = y + Math.random() * height / 30;
+                for(var x = 0; x < width; x = x + width / 15) {
+                    for(var y = 0; y < height; y = y + height / 15) {
+                        var px = x + Math.random() * width / 15;
+                        var py = y + Math.random() * height / 15;
                         var p = {x: px, originX: px, y: py, originY: py };
                         points.push(p);
                     }
@@ -144,28 +144,31 @@ if (Meteor.isClient) {
             }
 
             function shiftPoint(p) {
-                TweenLite.to(p,1.5,
+                TweenLite.to(p,5,
                     {
                         x: p.originX + 80 + Math.random() * 250,
                         y: p.originY + 80 + Math.random() * 250,
-                        ease: Linear.easeInOut,
+                        ease: SlowMo.easeInOut,
                         onComplete: function() {
+                            //drawLines(p);
                             shiftPoint(p);
+                            //requestAnimationFrame();
+
                         }
                     });
             }
 
             // Canvas manipulation
-//            function drawLines(p) {
-//                if(!p.active) return;
-//                for(var i in p.closest) {
-//                    ctx.beginPath();
-//                    ctx.moveTo(p.x, p.y);
-//                    ctx.lineTo(p.closest[i].x, p.closest[i].y);
-//                    ctx.strokeStyle = 'rgba(217, 234, 244,'+ p.active+')';
-//                    ctx.stroke();
-//                }
-//            }
+            function drawLines(p) {
+                if(!p.active) return;
+                for(var i in p.closest) {
+                    ctx.beginPath();
+                    ctx.moveTo(p.x, p.y);
+                    ctx.lineTo(p.closest[i].x, p.closest[i].y);
+                    ctx.strokeStyle = 'rgba(217, 234, 244,'+ p.active +')';
+                    ctx.stroke();
+                }
+            }
             function Circle(pos,rad,color) {
                 var _this = this;
 
@@ -179,8 +182,8 @@ if (Meteor.isClient) {
                 this.draw = function() {
                     if(!_this.active) return;
                     ctx.beginPath();
-                    ctx.arc(_this.pos.x, _this.pos.y, _this.radius, 0, 2 * Math.PI, false);
-                    ctx.fillStyle = 'rgba(156,217,249,'+ _this.active+')';
+                    ctx.arc(_this.pos.x, _this.pos.y, _this.radius * 1.2, 0, 2 * Math.PI, false);
+                    ctx.fillStyle = 'rgba(156,217,249,'+ _this.active +')';
                     ctx.fill();
                 };
             }
