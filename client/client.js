@@ -41,7 +41,7 @@ if (Meteor.isClient) {
         // Animated Header
         (function() {
 
-            var width, height, largeHeader, canvas, ctx, points, target, animateHeader = true;
+            var width, height, largeHeader, canvas, ctx, points, target, lineDrawn, animateHeader = true;
 
             // Main
             initHeader();
@@ -51,22 +51,23 @@ if (Meteor.isClient) {
             function initHeader() {
                 width = window.innerWidth;
                 height = window.innerHeight;
-                target = {x: width/2, y: height/2};
+                target = {x: width/2, y: height};
 
                 largeHeader = document.getElementById('large-header');
                 largeHeader.style.height = height + 'px';
 
                 canvas = document.getElementById('demo-canvas');
-                canvas.width = width;
-                canvas.height = height;
+                canvas.width = width * 2;
+                canvas.height = height * 2;
                 ctx = canvas.getContext('2d');
+                lineDrawn = false;
 
                 // create points
                 points = [];
-                for(var x = 0; x < width; x = x + width / 15) {
-                    for(var y = 0; y < height; y = y + height / 15) {
-                        var px = x + Math.random() * width / 15;
-                        var py = y + Math.random() * height / 15;
+                for(var x = 0; x < width; x = x + width / 50) {
+                    for(var y = 0; y < height; y = y + height / 50) {
+                        var px = x + Math.random() * width / 50;
+                        var py = y + Math.random() * height / 50;
                         var p = {x: px, originX: px, y: py, originY: py };
                         points.push(p);
                     }
@@ -80,7 +81,7 @@ if (Meteor.isClient) {
                         var p2 = points[j];
                         if(!(p1 == p2)) {
                             var placed = false;
-                            for(var k = 0; k < 15; k++) {
+                            for(var k = 0; k < 1; k++) {
                                 if(!placed) {
                                     if(closest[k] == undefined) {
                                         closest[k] = p2;
@@ -89,7 +90,7 @@ if (Meteor.isClient) {
                                 }
                             }
 
-                            for(var k = 0; k < 15; k++) {
+                            for(var k = 0; k < 1; k++) {
                                 if(!placed) {
                                     if(getDistance(p1, p2) < getDistance(p1, closest[k])) {
                                         closest[k] = p2;
@@ -125,10 +126,10 @@ if (Meteor.isClient) {
                         if(Math.abs(getDistance(target, points[i])) < 15000) {
                             points[i].active = 0.3;
                             points[i].circle.active = 0.6;
-                        } else if(Math.abs(getDistance(target, points[i])) < 50000) {
+                        } else if(Math.abs(getDistance(target, points[i])) < 150000) {
                             points[i].active = 0.4;
                             points[i].circle.active = 0.7;
-                        } else if(Math.abs(getDistance(target, points[i])) < 60000) {
+                        } else if(Math.abs(getDistance(target, points[i])) < 160000) {
                             points[i].active = 0.2;
                             points[i].circle.active = 0.5;
                         } else {
@@ -136,7 +137,8 @@ if (Meteor.isClient) {
                             points[i].circle.active = 0;
                         }
 
-                        //drawLines(points[i]);
+                        drawLines(points[i]);
+
                         points[i].circle.draw();
                     }
                 }
@@ -144,22 +146,27 @@ if (Meteor.isClient) {
             }
 
             function shiftPoint(p) {
-                TweenLite.to(p,5,
+                TweenLite.to(p,15,
                     {
-                        x: p.originX + 80 + Math.random() * 250,
-                        y: p.originY + 80 + Math.random() * 250,
-                        ease: SlowMo.easeInOut,
+                        x: [~~p.originX + 80 + Math.random() * 250],
+                        y: [~~p.originY + 80 + Math.random() * 250],
+                        ease: Linear.easeInOut,
                         onComplete: function() {
                             //drawLines(p);
                             shiftPoint(p);
                             //requestAnimationFrame();
-
+                            customAnim(p);
                         }
                     });
             }
 
+            function customAnim(point){
+
+            }
+
             // Canvas manipulation
             function drawLines(p) {
+
                 if(!p.active) return;
                 for(var i in p.closest) {
                     ctx.beginPath();
@@ -167,7 +174,9 @@ if (Meteor.isClient) {
                     ctx.lineTo(p.closest[i].x, p.closest[i].y);
                     ctx.strokeStyle = 'rgba(217, 234, 244,'+ p.active +')';
                     ctx.stroke();
+
                 }
+                lineDrawn = true;
             }
             function Circle(pos,rad,color) {
                 var _this = this;
@@ -182,7 +191,7 @@ if (Meteor.isClient) {
                 this.draw = function() {
                     if(!_this.active) return;
                     ctx.beginPath();
-                    ctx.arc(_this.pos.x, _this.pos.y, _this.radius * 1.2, 0, 2 * Math.PI, false);
+                    ctx.arc(_this.pos.x, _this.pos.y, _this.radius * 0.5, 0, 2 * Math.PI, false);
                     ctx.fillStyle = 'rgba(156,217,249,'+ _this.active +')';
                     ctx.fill();
                 };
