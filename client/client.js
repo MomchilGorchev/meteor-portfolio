@@ -41,7 +41,8 @@ if (Meteor.isClient) {
         // Animated Header
         (function() {
 
-            var width, height, largeHeader, canvas, ctx, points, target, lineDrawn, animateHeader = true;
+            var width, height, largeHeader, canvas, ctx, points, target, animateHeader = true,
+                linesDrawn = false;
 
             // Main
             initHeader();
@@ -51,7 +52,7 @@ if (Meteor.isClient) {
             function initHeader() {
                 width = window.innerWidth;
                 height = window.innerHeight;
-                target = {x: width/2, y: height};
+                target = {x: width / 2, y: height / 2};
 
                 largeHeader = document.getElementById('large-header');
                 largeHeader.style.height = height + 'px';
@@ -60,7 +61,6 @@ if (Meteor.isClient) {
                 canvas.width = width * 2;
                 canvas.height = height * 2;
                 ctx = canvas.getContext('2d');
-                lineDrawn = false;
 
                 // create points
                 points = [];
@@ -124,14 +124,14 @@ if (Meteor.isClient) {
                     for(var i in points) {
                         // detect points in range
                         if(Math.abs(getDistance(target, points[i])) < 15000) {
-                            points[i].active = 0.3;
-                            points[i].circle.active = 0.6;
-                        } else if(Math.abs(getDistance(target, points[i])) < 150000) {
                             points[i].active = 0.4;
-                            points[i].circle.active = 0.7;
+                            points[i].circle.active = 0.4;
+                        } else if(Math.abs(getDistance(target, points[i])) < 150000) {
+                            points[i].active = 0.6;
+                            points[i].circle.active = 0.6;
                         } else if(Math.abs(getDistance(target, points[i])) < 160000) {
-                            points[i].active = 0.2;
-                            points[i].circle.active = 0.5;
+                            points[i].active = 0.8;
+                            points[i].circle.active = 0.8;
                         } else {
                             points[i].active = 0;
                             points[i].circle.active = 0;
@@ -176,7 +176,7 @@ if (Meteor.isClient) {
                     ctx.stroke();
 
                 }
-                lineDrawn = true;
+                linesDrawn = true;
             }
             function Circle(pos,rad,color) {
                 var _this = this;
@@ -191,12 +191,11 @@ if (Meteor.isClient) {
                 this.draw = function() {
                     if(!_this.active) return;
                     ctx.beginPath();
-                    ctx.arc(_this.pos.x, _this.pos.y, _this.radius * 0.5, 0, 2 * Math.PI, false);
+                    ctx.arc(_this.pos.x, _this.pos.y, _this.radius * 1, 0, 2 * Math.PI, false);
                     ctx.fillStyle = 'rgba(156,217,249,'+ _this.active +')';
                     ctx.fill();
                 };
             }
-
             // Util
             function getDistance(p1, p2) {
                 return Math.pow(p1.x - p2.x, 2) + Math.pow(p1.y - p2.y, 2);

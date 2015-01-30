@@ -363,3 +363,66 @@ div.main-content{
   }
 }
 
+#chart-wrapper{
+  width: 100%;
+  height: 500px;
+  padding:0;
+  margin: 0 auto;
+  border-left: 1px solid $header-bg;
+  border-bottom: 1px solid $header-bg;
+  .chart-labels{
+    position: absolute;
+    top: 0;
+    text-align: right;
+    left: -150px;
+    p:not(:last-child){
+      margin-bottom: 77%
+    }
+  }
+  #chart-inner{
+    height: 100%;
+    .pilar{
+      border: 1px solid $skills-chart-border;
+      position: relative;
+      background: $skills-chart-bg;
+      box-shadow: $skills-chart-shadow;
+      p{
+        -webkit-transform: rotate(-35deg);
+        -moz-transform: rotate(-35deg);
+        -ms-transform: rotate(-35deg);
+        -o-transform: rotate(-35deg);
+        transform: rotate(-35deg);
+        &.single-line{
+          margin-top: -40px;
+        }
+        &.double-line{
+          margin-top: -60px;
+        }
+      }
+      &.html{
+        height: 100%;
+        bottom: -0%;
+      }
+      &.css{
+        height: 95%;
+        bottom: -5%;
+      }
+      &.js{
+        height: 90%;
+        bottom: -10%;
+      }
+      &.ps{
+        height: 60%;
+        bottom: -40%;
+      }
+      &.php{
+        height: 70%;
+        bottom: -30%;
+      }
+      &.git{
+        height: 85%;
+        bottom: -15%;
+      }
+    }
+  }
+}

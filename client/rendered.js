@@ -5,16 +5,28 @@ Template.skills.rendered = function(t){
         bindto: '#chart',
         data: {
             columns: [
-                ['data1', 30],
-                ['data2', 120]
+                ['HTML', 30],
+                ['CSS', 50],
+                ['JS', 80]
             ],
-            type : 'pie',
-            onclick: function (d, i) { console.log("onclick", d, i); },
-            onmouseover: function (d, i) { console.log("onmouseover", d, i); },
-            onmouseout: function (d, i) { console.log("onmouseout", d, i); }
+            type: 'bar'
         },
-        donut: {
-            title: "Iris Petal Width"
+        bar: {
+            width: {
+                ratio: 0.5
+            }
+        },
+        axis: {
+            y:{
+                label: {
+                    text: 'Y Label',
+                    position: 'outer-middle'
+                },
+                tick: {
+                    format: d3.format("$,") // ADD
+                }
+
+            }
         }
     });
 };
